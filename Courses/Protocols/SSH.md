@@ -11,7 +11,7 @@
 | **Sub-Protocols** | SSH-TRANS, SSH-AUTH, SSH-CONNECT |
 | **Status** | Active/Standard |
 | **OSI Layer** | Application Layer (Layer 7) |
-| **RFC** | RFC 4251-4254 |
+| **RFC** | [RFC 4251-4254](https://datatracker.ietf.org/doc/html/rfc4251) |
 
 ---
 
