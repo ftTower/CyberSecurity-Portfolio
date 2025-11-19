@@ -18,3 +18,11 @@
 | **RFC** | [RFC 4251-4254](https://datatracker.ietf.org/doc/html/rfc4251) |
 
 ---
+
+## 📕 Cross-References
+
+1. [🚀 Configure and setup SSH](../SSH/configuration.md)
+
+
+
+---
