@@ -1,7 +1,5 @@
 # SSH (Secure Shell)
 
-![Banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Protocols/SSH/criptografia-simetrica-ssh-hostinger-7448485.jpg)
-
 ## 📋 Protocol Information
 
 | Property | Details |
@@ -17,7 +15,7 @@
 
 ---
 
-
+![Banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Protocols/SSH/criptografia-simetrica-ssh-hostinger-7448485.jpg)
 
 ---
 
