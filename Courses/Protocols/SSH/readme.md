@@ -21,8 +21,12 @@
 
 ## 📕 Cross-References
 
-1. [🚀 Configure and setup SSH](../SSH/configuration.md)
-
+1. [Configure and setup SSH](../SSH/configuration.md)
+2. [Footprinting SSH](../SSH/footprinting.md)
 
 
 ---
+
+## 🔗 External-Ressources
+
+- [HackTheBox Module](https://academy.hackthebox.com/module/112/section/1240)
