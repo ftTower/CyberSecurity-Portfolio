@@ -1,6 +1,6 @@
 # SSH (Secure Shell)
 
-![Banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Protocols/SSH/criptografia-simetrica-ssh-hostinger-7448485.jpg)
+![Banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Protocols/SSH/banner.jpg)
 
 ---
 
@@ -18,4 +18,3 @@
 | **RFC** | [RFC 4251-4254](https://datatracker.ietf.org/doc/html/rfc4251) |
 
 ---
-
