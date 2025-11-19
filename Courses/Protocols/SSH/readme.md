@@ -2,6 +2,10 @@
 
 ## 📋 Protocol Information
 
+![Banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Protocols/SSH/criptografia-simetrica-ssh-hostinger-7448485.jpg)
+
+---
+
 | Property | Details |
 |----------|---------|
 | **Type** | Network Protocol |
@@ -12,10 +16,6 @@
 | **Status** | Active/Standard |
 | **OSI Layer** | Application Layer (Layer 7) |
 | **RFC** | [RFC 4251-4254](https://datatracker.ietf.org/doc/html/rfc4251) |
-
----
-
-![Banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Protocols/SSH/criptografia-simetrica-ssh-hostinger-7448485.jpg)
 
 ---
 
