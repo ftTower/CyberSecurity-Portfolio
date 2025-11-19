@@ -1,4 +1,4 @@
-# SSH (Secure Shell) Configuration
+# SSH Configuration and Setup
 
 
 ---

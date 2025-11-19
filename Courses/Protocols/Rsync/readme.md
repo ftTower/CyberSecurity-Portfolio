@@ -19,3 +19,12 @@
 
 ---
 
+## 📕 Cross-References
+
+1. []()
+
+---
+
+## 🔗 External-Ressources
+
+- []()

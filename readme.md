@@ -1,45 +1,31 @@
 # CyberSecurity Portfolio
 
-Bienvenue dans mon portfolio de cybersécurité ! Ce repository documente mon parcours, mes compétences et mes réalisations dans le domaine de la sécurité informatique.
+Welcome to my cybersecurity portfolio! This repository documents my journey, skills, and achievements in the field of information security.
 
-## 📋 Table des matières
+## 📋 Table of Contents
 
-- [À propos](#à-propos)
-- [Structure du portfolio](#structure-du-portfolio)
-- [Compétences](#compétences)
+- [Portfolio Structure](#portfolio-structure)
+- [Skills](#skills)
 - [Contact](#contact)
 
-## 👤 À propos
-
-Portfolio professionnel regroupant mes travaux, projets et accomplissements en cybersécurité.
-
-## 📁 Structure du portfolio
+## 📁 Portfolio Structure
 
 ```
-CyberSecurity-Portfolio/
-│
-├── CTF/                    # Capture The Flag challenges
-│   └── README.md          # Participations et résolutions de CTF
-│
-├── Labs/                   # Laboratoires pratiques
-│   └── README.md          # Exercices sur diverses plateformes
-│
-├── Tools/                  # Outils et scripts personnels
-│   └── README.md          # Scripts d'automatisation et outils custom
-│
-├── Projects/               # Projets personnels
-│   └── README.md          # Applications et recherches en sécurité
-│
-├── Certifications/         # Certifications et formations
-│   └── README.md          # Parcours de formation et certifications
-│
-├── Write-ups/              # Documentation détaillée
-│   └── README.md          # Write-ups de machines et challenges
-│
-└── Courses/                # Cours et formations
+├── Courses
+│   └── Protocols
+│       ├── Rsync
+│       │   └── readme.md
+│       └── SSH
+│           ├── configuration.md
+│           ├── footprinting.md
+│           └── readme.md
+├── readme.md
+└── Utils
+    └── wordslist
+        └── rockyou.txt.gz
 ```
 
-## 🛡️ Compétences
+## 🛡️ Skills
 
 ### Offensive Security
 - 🎯 Penetration Testing
@@ -55,28 +41,28 @@ CyberSecurity-Portfolio/
 - 📊 Security Monitoring
 - 🔬 Digital Forensics
 
-### Outils & Technologies
-- **Langages** : Python, Bash, PowerShell, C/C++, Go
-- **Frameworks** : Metasploit, Burp Suite, Impacket
-- **Outils** : Nmap, Wireshark, Ghidra, IDA Pro
-- **Plateformes** : Linux, Windows, Cloud (AWS, Azure)
+### Tools & Technologies
+- **Languages**: Python, Bash, PowerShell, C/C++, Go
+- **Frameworks**: Metasploit, Burp Suite, Impacket
+- **Tools**: Nmap, Wireshark, Ghidra, IDA Pro
+- **Platforms**: Linux, Windows, Cloud (AWS, Azure)
 
-## 📈 Statistiques
+## 📈 Statistics
 
-- **CTF Résolus** : [À compléter]
-- **Machines HackTheBox** : [À compléter]
-- **Certifications** : [À compléter]
-- **Projets complétés** : [À compléter]
+- **CTFs Solved**: [To be completed]
+- **HackTheBox Machines**: [To be completed]
+- **Certifications**: [To be completed]
+- **Completed Projects**: [To be completed]
 
 ## 📫 Contact
 
-- **GitHub** : [Votre profil]
-- **LinkedIn** : [Votre profil]
-- **Email** : [Votre email]
-- **Blog** : [Votre blog si applicable]
+- auer.winum.thomas@gmail.com
+- [Website](https://tauer.dev)
+- [GitHub](https://github.com/ftTower)
+- [Linkedin](https://linkedin.com/in/thomas-auer-winum)
 
 ---
 
-⚠️ **Disclaimer** : Tous les contenus de ce portfolio sont à des fins éducatives uniquement. Les techniques et outils présentés doivent être utilisés de manière éthique et légale.
+⚠️ **Disclaimer**: All contents of this portfolio are for educational purposes only. The techniques and tools presented must be used ethically and legally.
 
-📅 Dernière mise à jour : Novembre 2025
+📅 Last updated: November 2025
