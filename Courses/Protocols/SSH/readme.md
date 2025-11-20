@@ -19,6 +19,14 @@
 
 ---
 
+## 🔨 Usage
+
+```Bash
+ssh -v <username>@<ip address>
+```
+
+---
+
 ## 📕 Cross-References
 
 1. [Configure and setup SSH](../SSH/configuration.md)

@@ -4,10 +4,11 @@
 ---
 
 ## 📃 Default Configuration
-
+You can get the ssh configuration with this command :
 ```bash
 cat /etc/ssh/sshd_config  | grep -v "#" | sed -r '/^\s*$/d'
 ```
+Output :
 ```
 Include /etc/ssh/sshd_config.d/*.conf
 ChallengeResponseAuthentication no

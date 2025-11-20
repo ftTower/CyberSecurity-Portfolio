@@ -48,5 +48,22 @@ Output :
                                             `- [info] available since OpenSSH 5.7, Dropbear SSH 2013.62
 (key) ssh-ed25519                           -- [info] available since OpenSSH 6.5
 ```
+It gave the banner version
 
 ---
+
+### Change Authentication Method 
+
+For potential brute-force attacks, we can specify the authentication method with the SSH client option PreferredAuthentications.
+```Bash
+ssh -v <username>@<ip address> -o PreferredAuthentications=password
+```
+```
+OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020
+debug1: Reading configuration data /etc/ssh/ssh_config
+...SNIP...
+debug1: Authentications that can continue: publickey,password,keyboard-interactive
+debug1: Next authentication method: password
+
+cry0l1t3@10.129.14.132's password:
+```
