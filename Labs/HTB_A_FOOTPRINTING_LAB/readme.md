@@ -4,9 +4,10 @@
   <img src="https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/banner.png" alt="Banner">
 </p>
 
-- [Level 1](#level-1)
-- [Level 2](#level-2)
-- [Level 3](#level-3)
+- [First part](#level-1)
+- [Second part](#level-2)
+- [Third part](#level-3)
+
 
 
 ## Level 1
