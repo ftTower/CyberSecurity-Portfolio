@@ -6,7 +6,7 @@
 ### Scanning for Rsync
 
 ```bash
-sudo nmap -sV -p 873 <ip address>
+sudo nmap -sV -p 873 <ip_address>
 ```
 ```bash
 Starting Nmap 7.92 ( https://nmap.org ) at 2022-09-19 09:31 EDT
@@ -28,7 +28,7 @@ It is a very bad setup because packages are unencrypted. <br>
 This can sometimes be done without authentication.
 
 ```bash
-nc -nv <ip address> 873
+nc -nv <ip_address> 873
 ```
 ```bash
 (UNKNOWN) [127.0.0.1] 873 (rsync) open
@@ -43,7 +43,7 @@ Here we can see a share called dev, and we can enumerate it further.
 ### Enumerating an Open Share
 
 ```bash
-rsync -av --list-only rsync://<ip address>/<share name>
+rsync -av --list-only rsync://<ip_address>/<share name>
 ```
 
 ```bash

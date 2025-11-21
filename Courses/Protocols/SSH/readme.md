@@ -22,7 +22,7 @@
 ## 🔨 Usage
 
 ```Bash
-ssh -v <username>@<ip address>
+ssh -v <username>@<ip_address>
 ```
 
 ---

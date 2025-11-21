@@ -4,4 +4,5 @@
     - [Configuration and setup](../Protocols/SSH/configuration.md)
     - [Footprinting](../Protocols/SSH/footprinting.md)
 2. [Rsync](../Protocols/Rsync/)
-    <!-- - [Footprinting]() -->
+    - [Footprinting](../Protocols/Rsync/footprinting.md)
+3. [R-Services](../Protocols/R-Services/readme.md)

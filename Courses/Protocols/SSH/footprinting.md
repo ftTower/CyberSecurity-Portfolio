@@ -56,7 +56,7 @@ It gave the banner version
 
 For potential brute-force attacks, we can specify the authentication method with the SSH client option PreferredAuthentications.
 ```Bash
-ssh -v <username>@<ip address> -o PreferredAuthentications=password
+ssh -v <username>@<ip_address> -o PreferredAuthentications=password
 ```
 ```
 OpenSSH_8.2p1 Ubuntu-4ubuntu0.3, OpenSSL 1.1.1f  31 Mar 2020
