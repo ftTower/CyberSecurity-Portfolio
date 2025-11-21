@@ -104,14 +104,14 @@ NSE: TCP 10.10.14.20:36630 < 10.129.201.248:3389 |
 
 ---
 
-### RDP Security Check - Installation 
+### [RDP Security Check](https://github.com/CiscoCXSecurity/rdp-sec-check) - Installation 
 
-install Comprehensive Perl Archive Network (CPAN)
+Install Comprehensive Perl Archive Network (CPAN)
 
 ```bash
 sudo cpan
 ```
-
+Clone the project 
 ```bash
 git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git && cd rdp-sec-check
 ```
@@ -121,6 +121,7 @@ git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git && cd rdp-sec-che
 ```bash
 ./rdp-sec-check.pl <ip_address>
 ```
+this is the output from a old Windows 2000 RDP service
 ```bash
 Starting rdp-sec-check v0.9-beta ( http://labs.portcullis.co.uk/application/rdp-sec-check/ ) at Sun Nov  7 16:50:32 2021
 
