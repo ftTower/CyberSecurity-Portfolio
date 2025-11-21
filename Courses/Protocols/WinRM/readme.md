@@ -21,7 +21,7 @@
 
 ## 📕 Cross-References
 
-1. [footprinting](../WinRM/footprinting.md)
+1. [footprinting WinRM](../WinRM/footprinting.md)
 
 ---
 

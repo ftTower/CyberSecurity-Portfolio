@@ -29,7 +29,7 @@ Authentication and connection to RDP servers can be made in several ways. For ex
 
 ## 📕 Cross-References
 
-1. [footprinting](../RDP/footprinting.md)
+1. [Footprinting RDP](../RDP/footprinting.md)
 
 ---
 

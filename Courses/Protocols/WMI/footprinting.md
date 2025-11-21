@@ -4,7 +4,6 @@
 
 ### [WMIexec.py](https://github.com/SecureAuthCorp/impacket/blob/master/examples/wmiexec.py)
 
-
 ```powershell
 /usr/share/doc/python3-impacket/examples/wmiexec.py <username>:"<password>"@<ip_address> "hostname"
 ```

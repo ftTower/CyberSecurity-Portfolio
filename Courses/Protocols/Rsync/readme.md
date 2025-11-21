@@ -30,7 +30,7 @@ rsync -a ~/<src_path>/ <src_new_name>@<ip_address>:~<dst_path>
 
 ## 📕 Cross-References
 
-1. [Footprinting](../Rsync/footprinting.md)
+1. [Footprinting Rsync](../Rsync/footprinting.md)
 
 ---
 

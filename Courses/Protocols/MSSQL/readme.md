@@ -22,10 +22,12 @@
 
 ## 📕 Cross-References
 
-1. []()
+1. [Configure and Setup MSSQL](../MSSQL/configuration.md)
+2. [Footprinting MSSQL]()
+
 
 ---
 
 ## 🔗 External-Ressources
 
-- []()
+- [Microsoft doc](https://docs.microsoft.com/en-us/sql/relational-databases/databases/system-databases?view=sql-server-ver15)

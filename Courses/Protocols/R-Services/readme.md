@@ -33,7 +33,7 @@ The /etc/hosts.equiv file contains a list of trusted hosts and is used to grant 
 
 ## 📕 Cross-References
 
-1. [Footprinting](../R-Services/footprinting.md)
+1. [Footprinting R-Services](../R-Services/footprinting.md)
 
 ---
 

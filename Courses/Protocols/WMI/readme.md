@@ -25,7 +25,7 @@
 
 ## 📕 Cross-References
 
-1. [Footprinting](../WMI/footprinting.md)
+1. [Footprinting WMI](../WMI/footprinting.md)
 
 ---
 
