@@ -23,7 +23,7 @@
 ## 📕 Cross-References
 
 1. [Configure and Setup MSSQL](../MSSQL/configuration.md)
-2. [Footprinting MSSQL]()
+2. [Footprinting MSSQL](../MSSQL/footprinting.md)
 
 
 ---
