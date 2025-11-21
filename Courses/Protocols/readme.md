@@ -6,3 +6,5 @@
 2. [Rsync](../Protocols/Rsync/)
     - [Footprinting](../Protocols/Rsync/footprinting.md)
 3. [R-Services](../Protocols/R-Services/readme.md)
+    - [Footprinting](../Protocols/R-Services/footprinting.md)
+
