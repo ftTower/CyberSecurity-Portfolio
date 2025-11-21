@@ -4,13 +4,13 @@
   <img src="https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/banner.png" alt="Banner">
 </p>
 
-- [First part](#level-1)
-- [Second part](#level-2)
+---
+- [First part](#first-part)
+- [Second part](#second-part)
 - [Third part](#level-3)
 
-
-
-## Level 1
+---
+## First part
 
 ### `subject :`
 ```
@@ -22,7 +22,7 @@ Additionally, our teammates have found the following credentials "ceil:qwer1234"
 
 The administrators have stored a flag.txt file on this server to track our progress and measure success. Fully enumerate the target and submit the contents of this file as proof.
 ```
-
+---
 ### `resolution :`
 
 The first thing I did was to run an nmap scan over the server IP.
@@ -315,3 +315,102 @@ HTB{7nrzise7hednrxihskjed7nzrgkweunj47zngrhdbkjhgdfbjkc7hgj}
 ```
 
 ![Success](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/success.png)
+
+---
+
+## Second part
+
+### `subject :`
+```
+This second server is a server that everyone on the internal network has access to. In our discussion with our client, we pointed out that these servers are often one of the main targets for attackers and that this server should be added to the scope.
+
+Our customer agreed to this and added this server to our scope. Here, too, the goal remains the same. We need to find out as much information as possible about this server and find ways to use it against the server itself. For the proof and protection of customer data, a user named HTB has been created. Accordingly, we need to obtain the credentials of this user as proof.
+```
+
+### `resolution :`
+
+```bash
+sudo nmap -A 10.129.202.41
+```
+>`-A`: Enable OS detection, version detection, script scanning, and traceroute
+
+```
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-11-21 11:45 CST
+Nmap scan report for 10.129.202.41
+Host is up (0.050s latency).
+Not shown: 994 closed tcp ports (reset)
+PORT     STATE SERVICE       VERSION
+111/tcp  open  rpcbind       2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/tcp6  rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  2,3,4        111/udp6  rpcbind
+|   100003  2,3         2049/udp   nfs
+|   100003  2,3         2049/udp6  nfs
+|   100003  2,3,4       2049/tcp   nfs
+|   100003  2,3,4       2049/tcp6  nfs
+|   100005  1,2,3       2049/tcp   mountd
+|   100005  1,2,3       2049/tcp6  mountd
+|   100005  1,2,3       2049/udp   mountd
+|   100005  1,2,3       2049/udp6  mountd
+|   100021  1,2,3,4     2049/tcp   nlockmgr
+|   100021  1,2,3,4     2049/tcp6  nlockmgr
+|   100021  1,2,3,4     2049/udp   nlockmgr
+|   100021  1,2,3,4     2049/udp6  nlockmgr
+|   100024  1           2049/tcp   status
+|   100024  1           2049/tcp6  status
+|   100024  1           2049/udp   status
+|_  100024  1           2049/udp6  status
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds?
+2049/tcp open  nlockmgr      1-4 (RPC #100021)
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+|_ssl-date: 2025-11-21T17:46:28+00:00; 0s from scanner time.
+| rdp-ntlm-info: 
+|   Target_Name: WINMEDIUM
+|   NetBIOS_Domain_Name: WINMEDIUM
+|   NetBIOS_Computer_Name: WINMEDIUM
+|   DNS_Domain_Name: WINMEDIUM
+|   DNS_Computer_Name: WINMEDIUM
+|   Product_Version: 10.0.17763
+|_  System_Time: 2025-11-21T17:46:19+00:00
+| ssl-cert: Subject: commonName=WINMEDIUM
+| Not valid before: 2025-11-20T17:31:53
+|_Not valid after:  2026-05-22T17:31:53
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.94SVN%E=4%D=11/21%OT=111%CT=1%CU=39860%PV=Y%DS=2%DC=T%G=Y%TM=69
+OS:20A57A%P=x86_64-pc-linux-gnu)SEQ(SP=107%GCD=1%ISR=10E%TI=I%CI=I%II=I%SS=
+OS:S%TS=U)OPS(O1=M552NW8NNS%O2=M552NW8NNS%O3=M552NW8%O4=M552NW8NNS%O5=M552N
+OS:W8NNS%O6=M552NNS)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FF70)ECN
+OS:(R=Y%DF=Y%T=80%W=FFFF%O=M552NW8NNS%CC=Y%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F=A
+OS:S%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T5(R
+OS:=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A%A=O%F
+OS:=R%O=%RD=0%Q=)T7(R=N)U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%
+OS:RUCK=G%RUD=G)IE(R=Y%DFI=N%T=80%CD=Z)
+
+Network Distance: 2 hops
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-time: 
+|   date: 2025-11-21T17:46:20
+|_  start_date: N/A
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled but not required
+
+TRACEROUTE (using port 1025/tcp)
+HOP RTT      ADDRESS
+1   49.30 ms 10.10.14.1
+2   50.26 ms 10.129.202.41
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 78.20 seconds
+```
+
+
+
