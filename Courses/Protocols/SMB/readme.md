@@ -24,10 +24,12 @@
 
 ## 📕 Cross-References
 
-1. []()
+1. [Configuration and setup SMB](../SMB/configuration.md)
+2. [Footprinting SMB](../SMB/footprinting.md)
+
 
 ---
 
 ## 🔗 External-Ressources
 
-- []()
+- [rpcclient commands](https://www.samba.org/samba/docs/current/man-html/rpcclient.1.html)
