@@ -25,35 +25,6 @@ Welcome to my cybersecurity portfolio! This repository documents my journey, ski
         └── rockyou.txt.gz
 ```
 
-## 🛡️ Skills
-
-### Offensive Security
-- 🎯 Penetration Testing
-- 🌐 Web Application Security
-- 📡 Network Security
-- 🔧 Reverse Engineering
-- 💾 Binary Exploitation
-- 🏢 Active Directory Attacks
-
-### Defensive Security
-- 🚨 Incident Response
-- 🔍 Threat Hunting
-- 📊 Security Monitoring
-- 🔬 Digital Forensics
-
-### Tools & Technologies
-- **Languages**: Python, Bash, PowerShell, C/C++, Go
-- **Frameworks**: Metasploit, Burp Suite, Impacket
-- **Tools**: Nmap, Wireshark, Ghidra, IDA Pro
-- **Platforms**: Linux, Windows, Cloud (AWS, Azure)
-
-## 📈 Statistics
-
-- **CTFs Solved**: [To be completed]
-- **HackTheBox Machines**: [To be completed]
-- **Certifications**: [To be completed]
-- **Completed Projects**: [To be completed]
-
 ## 📫 Contact
 
 - auer.winum.thomas@gmail.com

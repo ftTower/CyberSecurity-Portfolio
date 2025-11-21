@@ -412,4 +412,13 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 78.20 seconds
 ```
 
+I was a bit lost with this output, but i made a little research about open ports and got this.
+
+| Port | Details |
+| ---  | ------- |
+| 111  | Remote Procedure Call (RPC) |
+| 135  | Transmission Control Protocol (TCP) |
+| 139 - 445  | Server Message Block (SMB) |
+| 2049 | Network File System (NFS) |
+| 3389 | Remote Desktop Protocol (RDP) |
 
