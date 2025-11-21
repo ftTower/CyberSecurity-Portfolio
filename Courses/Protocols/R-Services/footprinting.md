@@ -1,8 +1,6 @@
-# Rsync Footprinting
-
+# R-Services Footprinting
 
 ## Methods
-
 
 ### Scanning for R-Services
 

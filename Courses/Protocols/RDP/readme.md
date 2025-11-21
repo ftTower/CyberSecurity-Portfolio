@@ -1,4 +1,4 @@
-# RDP
+# RDP (Remote Desktop Protocol)
 
 ![Banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Protocols/RDP/banner.png)
 
@@ -22,6 +22,11 @@
 ## 🔨 Usage
 
 
+```bash
+xfreerdp /u:<username> /p:"<password>" /v:<ip_address>
+```
+Authentication and connection to RDP servers can be made in several ways. For example, we can connect to RDP servers on Linux using xfreerdp, rdesktop, or Remmina and interact with the GUI of the server accordingly.
+
 ## 📕 Cross-References
 
 1. []()
@@ -30,4 +35,4 @@
 
 ## 🔗 External-Ressources
 
-- []()
+- [Microsoft doc](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol)
