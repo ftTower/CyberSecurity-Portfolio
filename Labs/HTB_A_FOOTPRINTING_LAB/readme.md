@@ -1,6 +1,8 @@
 # Footprinting Lab
 
-![Banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/banner.png)
+<p align="center">
+  <img src="https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/banner.png" alt="Banner">
+</p>
 
 - [Level 1](#level-1)
 - [Level 2](#level-2)
