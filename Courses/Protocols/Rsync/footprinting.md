@@ -14,11 +14,14 @@ Nmap scan report for localhost (127.0.0.1)
 Host is up (0.0058s latency).
 
 PORT    STATE SERVICE VERSION
-873/tcp open  rsync   (protocol version 31) # <- 
+873/tcp open  rsync   (protocol version 31)
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 1.13 seconds
 ```
+<p>In this case Rsync is working with the deamon port 873,
+It is a very bad setup because packages are unencrypted. <br>
+<b>Most of the time Rsync will be working over SSH on port 22.</b> </p>
 
 ### Probing for Accessible Shares
 
@@ -35,6 +38,7 @@ nc -nv <ip address> 873
 dev            	Dev Tools
 @RSYNCD: EXIT
 ```
+Here we can see a share called dev, and we can enumerate it further.
 
 ### Enumerating an Open Share
 
