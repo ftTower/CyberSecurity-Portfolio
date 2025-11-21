@@ -19,12 +19,23 @@
 
 ---
 
+## 🔨 Usage
+
+Syncing a directory recursively and keeping file permissions:
+```Bash
+rsync -a ~/<src_path>/ <src_new_name>@<ip_address>:~<dst_path>
+```
+
+---
+
 ## 📕 Cross-References
 
-1. []()
+1. [Footprinting](../Rsync/footprinting.md)
 
 ---
 
 ## 🔗 External-Ressources
 
-- []()
+- [HackTheBox Module](https://academy.hackthebox.com/module/112/section/1240)
+- [Rsync man page](https://linux.die.net/man/1/rsync)
+- [Use Rsync over SSH](https://phoenixnap.com/kb/how-to-rsync-over-ssh)

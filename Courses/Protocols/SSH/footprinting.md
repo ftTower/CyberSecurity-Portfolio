@@ -6,12 +6,12 @@
 ### SSH-Audit
 
 First of all, clone ssh-audit tool and enter repository
-```shell
+```bash
 git clone https://github.com/jtesta/ssh-audit.git && cd ssh-audit
 ```
 
 Launch the tool with ip address in parameter
-```shell
+```bash
 ./ssh-audit.py <ip adress>
 ```
 

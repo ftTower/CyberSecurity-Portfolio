@@ -38,3 +38,4 @@ ssh -v <username>@<ip address>
 ## 🔗 External-Ressources
 
 - [HackTheBox Module](https://academy.hackthebox.com/module/112/section/1240)
+- [Hardening SSH](https://www.ssh-audit.com/hardening_guides.html)
