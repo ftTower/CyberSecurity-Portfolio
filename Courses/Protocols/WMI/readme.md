@@ -4,6 +4,15 @@
 
 ---
 
+## 📑 Table of Contents
+
+- [Protocol Information](#-protocol-information)
+- [Usage](#-usage)
+- [Cross-References](#-cross-references)
+- [External-Ressources](#-external-ressources)
+
+---
+
 ## 📋 Protocol Information
 
 | Property | Details |
