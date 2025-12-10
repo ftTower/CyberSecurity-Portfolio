@@ -5,9 +5,22 @@
 </p>
 
 ---
-- [First part](#first-part)
-- [Second part](#second-part)
-- [Third part](#level-3)
+## Table of Contents
+
+### 1. [First Part](#first-part)
+  - [Subject](#subject-)
+  - [Resolution](#resolution-)
+    - [Enumeration](#enumeration-)
+    - [SSH Footprinting](#ssh-footprinting-)
+    - [FTP Footprinting](#ftp-footprinting-)
+    - [Retrieving Informations](#retriving-informations-)
+### 2. [Second Part](#second-part)
+  - [Subject](#subject--1)
+  - [Resolution](#resolution--1)
+    - [Enumeration](#enumeration--1)
+### 3. [Third Part](#third-part)
+  - [Subject](#subject-2)
+  - [Resolution](#resolution-2)
 
 ---
 ## First part
@@ -24,6 +37,8 @@ The administrators have stored a flag.txt file on this server to track our progr
 ```
 ---
 ### `resolution :`
+
+#### `enumeration: `
 
 The first thing I did was to run an nmap scan over the server IP.
 ```bash
@@ -72,6 +87,8 @@ Here we can see many interesting pieces of information:
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel # <- system information
 ```
 
+#### `SSH Footprinting: `
+
 The subject told us that our teammate has found credentials linked to SSH, so we confirmed that the DNS server has an open SSH port.
 
 So, I tried those credentials on SSH:
@@ -93,6 +110,9 @@ ceil@10.129.11.228: Permission denied (publickey).
 Unfortunately, SSH is configured to only allow connection with public key for the ceil user.
 
 My next goal was to inspect the ftp server.
+
+#### `FTP Footprinting: `
+
 
 ```bash
 ftp 10.129.11.228 21 # <- port 
@@ -137,6 +157,9 @@ Remote system type is UNIX.
 Using binary mode to transfer files.
 ftp>
 ```
+
+#### `Retriving informations: `
+
 
 ```
 ftp> ls -la
@@ -329,6 +352,9 @@ Our customer agreed to this and added this server to our scope. Here, too, the g
 
 ### `resolution :`
 
+#### `enumeration: `
+
+
 ```bash
 sudo nmap -A 10.129.202.41
 ```
@@ -414,11 +440,13 @@ Nmap done: 1 IP address (1 host up) scanned in 78.20 seconds
 
 I was a bit lost with this output, but i made a little research about open ports and got this.
 
-| Port | Details |
-| ---  | ------- |
-| 111  | Remote Procedure Call (RPC) |
-| 135  | Transmission Control Protocol (TCP) |
-| 139 - 445  | Server Message Block (SMB) |
-| 2049 | Network File System (NFS) |
-| 3389 | Remote Desktop Protocol (RDP) |
+| Port | Details | notes |
+| ---  | ------- | ------|
+| 111  | Remote Procedure Call | [RPC]() |
+| 135  | Transmission Control Protocol | [TCP]() | 
+| 139 - 445  | Server Message Block | [SMB](../../Courses/Protocols/SMB/readme.md) | 
+| 2049 | Network File System | [NFS](../../Courses/Protocols/NFS/readme.md) |
+| 3389 | Remote Desktop Protocol | [RDP](../../Courses/Protocols/RDP/readme.md) |
+
+
 
