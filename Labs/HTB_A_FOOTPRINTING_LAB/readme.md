@@ -7,9 +7,9 @@
 ---
 ## Table of Contents
 
-1. [First Part](./part_1.md)
+[First Part](./part_1.md)
   
-2. [Second Part](./part_2.md)
+[Second Part](./part_2.md)
 
-3. [Third Part](#third-part)
+[Third Part]()
 
