@@ -2,12 +2,19 @@
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/banner.jpg)
 
 Welcome to my portfolio!
-This repository documents my journey, skills, and achievements in the field of information security.
+
+A comprehensive cybersecurity portfolio and evolving knowledge base. This repository centralizes detailed study notes, write-ups, and pentesting utilities. Designed for continuous learning and future search engine integration.
+
+💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
 
 ## 📋 Table of Contents
 
-- [Contact](#contact)
-- [Portfolio Structure](#portfolio-structure)
+[Courses](./Courses/readme.md)
+![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)
+
+[Labs](./Labs/readme.md)
+![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)
+
 
 ## 📫 Contact
 
@@ -31,4 +38,4 @@ This repository documents my journey, skills, and achievements in the field of i
 
 ⚠️ **Disclaimer**: All contents of this portfolio are for educational purposes only. The techniques and tools presented must be used ethically and legally.
 
-📅 Last updated: November 2025
+📅 Last updated: December 2025
