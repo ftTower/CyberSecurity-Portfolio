@@ -8,11 +8,12 @@
 2. [SMB](#2-smb---server-message-block) - Server Message Block
 3. [MSSQL](#3-mssql---microsoft-sql) - Microsoft SQL
 4. [NFS](#4-nfs---network-file-system) - Network File System
-5. [Rsync](#5-rsync) - File Synchronization
-6. [R-Services](#6-r-services) - Remote Services
-7. [RDP](#7-rdp---remote-desktop-protocol) - Remote Desktop Protocol
-8. [WinRM](#8-winrm---windows-remote-management) - Windows Remote Management
-9. [WMI](#9-wmi---windows-management-instrumentation) - Windows Management Instrumentation
+5. [IMAP](#5-imap---internet-message-access-protocol) - Internet Message Access Protocol
+6. [Rsync](#6-rsync) - File Synchronization
+7. [R-Services](#7-r-services) - Remote Services
+8. [RDP](#8-rdp---remote-desktop-protocol) - Remote Desktop Protocol
+9. [WinRM](#9-winrm---windows-remote-management) - Windows Remote Management
+10. [WMI](#10-wmi---windows-management-instrumentation) - Windows Management Instrumentation
 
 ---
 
@@ -36,23 +37,28 @@
 ### 4. NFS - Network File System
 - **Main:** [NFS Protocol](./NFS/)
 
-### 5. Rsync
+### 5. IMAP - Internet Message Access Protocol
+- **Main:** [IMAP Protocol](./IMAP/)
+- [Configuration and setup](./IMAP/configuration.md)
+- [Footprinting](./IMAP/footprinting.md)
+
+### 6. Rsync
 - **Main:** [Rsync Protocol](./Rsync/)
 - [Footprinting](./Rsync/footprinting.md)
 
-### 6. R-Services
+### 7. R-Services
 - **Main:** [R-Services Protocol](./R-Services/)
 - [Footprinting](./R-Services/footprinting.md)
 
-### 7. RDP - Remote Desktop Protocol
+### 8. RDP - Remote Desktop Protocol
 - **Main:** [RDP Protocol](./RDP/)
 - [Footprinting](./RDP/footprinting.md)
 
-### 8. WinRM - Windows Remote Management
+### 9. WinRM - Windows Remote Management
 - **Main:** [WinRM Protocol](./WinRM/)
 - [Footprinting](./WinRM/footprinting.md)
 
-### 9. WMI - Windows Management Instrumentation
+### 10. WMI - Windows Management Instrumentation
 - **Main:** [WMI Protocol](./WMI/)
 - [Footprinting](./WMI/footprinting.md)
 
