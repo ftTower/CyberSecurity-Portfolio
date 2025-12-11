@@ -9,10 +9,10 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 
 ## 📋 Table of Contents
 
-[Courses](./Courses/readme.md)
+## [Courses](./Courses/readme.md)
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)
 
-[Labs](./Labs/readme.md)
+## [Labs](./Labs/readme.md)
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)
 
 
