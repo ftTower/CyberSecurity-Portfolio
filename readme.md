@@ -12,12 +12,7 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 ### 📚 Courses
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)
-
-<p align="center">
-  <a href="./Courses/readme.md">
-    <img src="https://img.shields.io/badge/View%20Courses-4A90E2?style=for-the-badge&logo=bookstack&logoColor=white" alt="View Courses"/>
-  </a>
-</p>
+[View Courses](./Courses/readme.md)
 
 Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
 
@@ -26,12 +21,8 @@ Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
 ### 🔬 Labs
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)
+[View Labs](./Labs/readme.md)
 
-<p align="center">
-  <a href="./Labs/readme.md">
-    <img src="https://img.shields.io/badge/View%20Labs-E74C3C?style=for-the-badge&logo=flask&logoColor=white" alt="View Labs"/>
-  </a>
-</p>
 
 Practical penetration testing exercises and CTF write-ups.
 
