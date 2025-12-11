@@ -9,11 +9,13 @@
 3. [MSSQL](#3-mssql---microsoft-sql) - Microsoft SQL
 4. [NFS](#4-nfs---network-file-system) - Network File System
 5. [IMAP](#5-imap---internet-message-access-protocol) - Internet Message Access Protocol
-6. [Rsync](#6-rsync) - File Synchronization
-7. [R-Services](#7-r-services) - Remote Services
-8. [RDP](#8-rdp---remote-desktop-protocol) - Remote Desktop Protocol
-9. [WinRM](#9-winrm---windows-remote-management) - Windows Remote Management
-10. [WMI](#10-wmi---windows-management-instrumentation) - Windows Management Instrumentation
+6. [POP3](#6-pop3---post-office-protocol-3) - Post Office Protocol 3
+7. [SNMP](#7-snmp---simple-network-management-protocol) - Simple Network Management Protocol
+8. [Rsync](#8-rsync) - File Synchronization
+9. [R-Services](#9-r-services) - Remote Services
+10. [RDP](#10-rdp---remote-desktop-protocol) - Remote Desktop Protocol
+11. [WinRM](#11-winrm---windows-remote-management) - Windows Remote Management
+12. [WMI](#12-wmi---windows-management-instrumentation) - Windows Management Instrumentation
 
 ---
 
@@ -42,23 +44,30 @@
 - [Configuration and setup](./IMAP/configuration.md)
 - [Footprinting](./IMAP/footprinting.md)
 
-### 6. Rsync
+### 6. POP3 - Post Office Protocol 3
+- **Main:** [POP3 Protocol](./POP3/)
+- [Footprinting](./POP3/footprinting.md)
+
+### 7. SNMP - Simple Network Management Protocol
+- **Main:** [SNMP Protocol](./SNMP/)
+
+### 8. Rsync
 - **Main:** [Rsync Protocol](./Rsync/)
 - [Footprinting](./Rsync/footprinting.md)
 
-### 7. R-Services
+### 9. R-Services
 - **Main:** [R-Services Protocol](./R-Services/)
 - [Footprinting](./R-Services/footprinting.md)
 
-### 8. RDP - Remote Desktop Protocol
+### 10. RDP - Remote Desktop Protocol
 - **Main:** [RDP Protocol](./RDP/)
 - [Footprinting](./RDP/footprinting.md)
 
-### 9. WinRM - Windows Remote Management
+### 11. WinRM - Windows Remote Management
 - **Main:** [WinRM Protocol](./WinRM/)
 - [Footprinting](./WinRM/footprinting.md)
 
-### 10. WMI - Windows Management Instrumentation
+### 12. WMI - Windows Management Instrumentation
 - **Main:** [WMI Protocol](./WMI/)
 - [Footprinting](./WMI/footprinting.md)
 
