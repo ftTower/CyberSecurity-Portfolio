@@ -1,9 +1,11 @@
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/banner.jpg)
 
-Welcome to my portfolio!
+# Welcome to my portfolio!
 
+```
 A comprehensive cybersecurity portfolio and evolving knowledge base. This repository centralizes detailed study notes, write-ups, and pentesting utilities. Designed for continuous learning and future search engine integration.
+```
 
 💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
 
