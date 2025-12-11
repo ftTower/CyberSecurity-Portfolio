@@ -1,6 +1,6 @@
 # CyberSecurity Portfolio
 
-Welcome to my cybersecurity portfolio! This repository documents my journey, skills, and achievements in the field of information security.
+Welcome to my portfolio! This repository documents my journey, skills, and achievements in the field of information security.
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/banner.jpg)
 
