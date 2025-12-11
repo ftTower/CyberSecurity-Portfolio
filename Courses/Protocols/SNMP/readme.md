@@ -24,7 +24,7 @@
 
 ## 📕 Cross-References
 
-1. []()
+1. [footprinting](./footprinting.md)
 
 ---
 
