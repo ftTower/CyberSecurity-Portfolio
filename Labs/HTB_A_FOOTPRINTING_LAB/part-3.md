@@ -608,3 +608,236 @@ XvSb8cNlUIWdRwAAAAt0b21ATklYSEFSRAECAwQFBg==
 )
 ```
 
+```
+touch sshkey_private
+```
+
+```
+ssh -i sshkey_private tom@10.129.202.20
+```
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for 'sshkey_private' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "sshkey_private": bad permissions
+```
+
+```
+sudo chmod 600 sshkey_private
+```
+
+```
+ssh-keygen -p -f sshkey_private -m PEM
+```
+
+```
+Key has comment 'tom@NIXHARD'
+Enter new passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved with the new passphrase.
+```
+
+```
+ssh -i sshkey_private tom@10.129.202.20
+```
+
+```
+Enter passphrase for key 'sshkey_private': 
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-90-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu 11 Dec 2025 05:07:24 PM UTC
+
+  System load:  0.0               Processes:               181
+  Usage of /:   67.0% of 5.70GB   Users logged in:         0
+  Memory usage: 31%               IPv4 address for ens192: 10.129.202.20
+  Swap usage:   0%
+
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Wed Nov 10 02:51:52 2021 from 10.10.14.20
+tom@NIXHARD:~$ 
+```
+
+```
+history
+```
+
+```
+1  mysql -u tom -p
+    2  ssh-keygen -t rsa -b 4096
+    3  ls
+    4  ls -al
+    5  cd .ssh/
+    6  ls
+    7  cd mail/
+    8  ls
+    9  ls -al
+   10  cd .imap/
+   11  ls
+   12  cd Important/
+   13  ls
+   14  set term=xterm
+   15  vim key
+   16  cat ~/.ssh/id_rsa
+   17  vim key
+   18  ls
+   19  mv key ..
+   20  cd ..
+   21  ls
+   22  mv key Important/
+   23  mv Important/key ../
+   24  cd ..
+   25  ls
+   26  ls -l
+   27  id
+   28  cat /etc/passwd
+   29  ls
+   30  cd mail/
+   31  ls
+   32  ls -al
+   33  cd mail/
+   34  ls
+   35  rm Meetings 
+   36  rm TESTING Important 
+   37  ls -l
+   38  cd ..
+   39  ls -al
+   40  mv mail/key Maildir/.Important/new/
+   41  mv Maildir/.Important/new/key Maildir/new/
+   42  cd Maildir/new/
+   43  ls
+   44  cd ..
+   45  tree .
+   46  cat cur/key
+   47  cd cur/
+   48  ls
+   49  ls -al
+   50  cat "key:2,"
+   51  mysql -u tom -p 
+   52  mysql -u tom -p
+   53  ls
+   54  ls -la
+   55  history
+```
+
+```
+tom@NIXHARD:~$ tree
+.
+├── mail
+└── Maildir
+    ├── cur
+    │   └── key:2,S
+    ├── dovecot.index.cache
+    ├── dovecot.index.log
+    ├── dovecot.list.index.log
+    ├── dovecot-uidlist
+    ├── dovecot-uidvalidity
+    ├── dovecot-uidvalidity.618b2589
+    ├── new
+    └── tmp
+
+5 directories, 7 files
+```
+
+```
+grep -ri "HTB" .
+```
+
+```
+./Maildir/cur/key:2,S:HELO dev.inlanefreight.htb
+./Maildir/cur/key:2,S:MAIL FROM:<tech@dev.inlanefreight.htb>
+./Maildir/cur/key:2,S:RCPT TO:<bob@inlanefreight.htb>
+./Maildir/cur/key:2,S:From: [Admin] <tech@inlanefreight.htb>
+./Maildir/cur/key:2,S:To: <tom@inlanefreight.htb>
+./.viminfo:$inlanefreight.htb
+./.viminfo::%s/example.com/inlanefreight.htb/g
+./.viminfo:|2,0,1636508569,,"%s/example.com/inlanefreight.htb/g"
+```
+
+
+```
+cat /etc/passwd | grep -i "HTB"
+```
+
+no output
+
+
+
+```bash
+mysql -u tom -p
+```
+
+```
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.27-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+```
+
+
+```
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| users              |
++--------------------+
+5 rows in set (0.01 sec)
+```
+
+```
+mysql> use users;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+```
+
+```
+mysql> show columns from users;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | int         | YES  |     | NULL    |       |
+| username | varchar(50) | YES  |     | NULL    |       |
+| password | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+```
+
+```
+mysql> SELECT * FROM users WHERE username LIKE "HTB";
++------+----------+------------------------------+
+| id   | username | password                     |
++------+----------+------------------------------+
+|  150 | HTB      | cr3n4...............sncif7ds |
++------+----------+------------------------------+
+1 row in set (0.01 sec)
+```
