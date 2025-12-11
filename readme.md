@@ -9,7 +9,7 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 
 ## 📋 Table of Contents
 
-### [📚 Courses](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
+### [📚 Courses](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses) <- view courses
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)
 
@@ -17,7 +17,7 @@ Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
 
 ---
 
-### [🔬 Labs](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
+### [🔬 Labs](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs) <- view labs
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)
 
