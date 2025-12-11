@@ -7,25 +7,25 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 
 💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
 
-## 📋 Table of Contents
+## `📋 Table of Contents`
 
-### [📚 Courses](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses) <- view courses
+### [📚 Courses](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses) <- click here
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)
 
-Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
+>Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
 
 ---
 
-### [🔬 Labs](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs) <- view labs
+### [🔬 Labs](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs) <- click here
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)
 
 
-Practical penetration testing exercises and CTF write-ups.
+>Practical penetration testing exercises and CTF write-ups.
 
 
-## 📫 Contact
+## `📫 Contact`
 
 - auer.winum.thomas@gmail.com
 - [Website](https://tauer.dev)
@@ -33,7 +33,7 @@ Practical penetration testing exercises and CTF write-ups.
 - [Linkedin](https://linkedin.com/in/thomas-auer-winum)
 
 
-## 📁 Portfolio Structure
+## `📁 Portfolio Structure`
 
 ```
 .
