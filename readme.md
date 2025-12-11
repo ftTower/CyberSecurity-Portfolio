@@ -8,31 +8,36 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
 
 ## 📋 Table of Contents
-<div align="center">
 
 ### 📚 Courses
 
-<a href="./Courses/readme.md">
-    <img src="https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png" alt="Courses Banner" style="max-width: 100%; cursor: pointer;"/>
-</a>
+<p align="center">
+  <img src="https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png" alt="Courses Banner" width="80%"/>
+</p>
 
-<a href="./Courses/readme.md">
+<p align="center">
+  <a href="./Courses/readme.md">
     <img src="https://img.shields.io/badge/View%20Courses-4A90E2?style=for-the-badge&logo=bookstack&logoColor=white" alt="View Courses"/>
-</a>
+  </a>
+</p>
+
+Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
 
 ---
 
 ### 🔬 Labs
 
-<a href="./Labs/readme.md">
-    <img src="https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png" alt="Labs Banner" style="max-width: 100%; cursor: pointer;"/>
-</a>
+<p align="center">
+  <img src="https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png" alt="Labs Banner" width="80%"/>
+</p>
 
-<a href="./Labs/readme.md">
+<p align="center">
+  <a href="./Labs/readme.md">
     <img src="https://img.shields.io/badge/View%20Labs-E74C3C?style=for-the-badge&logo=flask&logoColor=white" alt="View Labs"/>
-</a>
+  </a>
+</p>
 
-</div>
+Practical penetration testing exercises and CTF write-ups.
 
 
 ## 📫 Contact
