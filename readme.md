@@ -11,7 +11,7 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 
 ### 📚 Courses
 
-[View Courses](./Courses/readme.md)
+[View Courses](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)
 
@@ -21,7 +21,7 @@ Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
 
 ### 🔬 Labs
 
-[View Labs](./Labs/readme.md)
+[View Labs](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)
 
