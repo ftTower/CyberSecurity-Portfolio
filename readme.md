@@ -19,49 +19,10 @@ Welcome to my cybersecurity portfolio! This repository documents my journey, ski
 
 ```
 .
-├── Utils
-│   ├── wordslist
-│   │   └── rockyou.txt.gz
-│   └── templates
-│       └── protocol.md
-├── readme.md
+├── Courses
 ├── Labs
-│   └── HTB_A_FOOTPRINTING_LAB
-│       └── readme.md
-└── Courses
-    └── Protocols
-        ├── WMI
-        │   ├── readme.md
-        │   └── footprinting.md
-        ├── WinRM
-        │   ├── readme.md
-        │   └── footprinting.md
-        ├── SSH
-        │   ├── readme.md
-        │   ├── footprinting.md
-        │   └── configuration.md
-        ├── SMB
-        │   ├── readme.md
-        │   ├── footprinting.md
-        │   └── configuration.md
-        ├── Rsync
-        │   ├── scripts
-        │   │   └── backup.sh
-        │   ├── readme.md
-        │   └── footprinting.md
-        ├── R-Services
-        │   ├── readme.md
-        │   └── footprinting.md
-        ├── readme.md
-        ├── RDP
-        │   ├── readme.md
-        │   └── footprinting.md
-        ├── NFS
-        │   └── readme.md
-        └── MSSQL
-            ├── readme.md
-            ├── footprinting.md
-            └── configuration.md
+├── readme.md
+└── Utils
 ```
 
 ---
