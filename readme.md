@@ -8,12 +8,25 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
 
 ## 📋 Table of Contents
+<div align="center">
 
-## [Courses](./Courses/readme.md)
-![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)
+### 📚 [Courses](./Courses/readme.md)
+[![Courses](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)](./Courses/readme.md)
 
-## [Labs](./Labs/readme.md)
-![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)
+<a href="./Courses/readme.md">
+    <img src="https://img.shields.io/badge/View%20Courses-4A90E2?style=for-the-badge&logo=bookstack&logoColor=white" alt="View Courses"/>
+</a>
+
+---
+
+### 🔬 [Labs](./Labs/readme.md)
+[![Labs](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)](./Labs/readme.md)
+
+<a href="./Labs/readme.md">
+    <img src="https://img.shields.io/badge/View%20Labs-E74C3C?style=for-the-badge&logo=flask&logoColor=white" alt="View Labs"/>
+</a>
+
+</div>
 
 
 ## 📫 Contact
