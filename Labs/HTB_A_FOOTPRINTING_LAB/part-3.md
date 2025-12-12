@@ -2,7 +2,9 @@
 
 ### `subject :`
 ```
-The third server is an MX and management server for the internal network. Subsequently, this server has the function of a backup server for the internal accounts in the domain. Accordingly, a user named HTB was also created here, whose credentials we need to access.
+The third server is an MX and management server for the internal network.
+Subsequently, this server has the function of a backup server for the internal accounts in the domain.
+Accordingly, a user named HTB was also created here, whose credentials we need to access.
 ```
 
 ### `resolution :`
@@ -81,13 +83,13 @@ Nmap done: 1 IP address (1 host up) scanned in 206.58 seconds
 
 here is a list of all open port services (TCP)
 
-| Port | Details | Course link |
-| ---  | ------- | ------|---|
-| 22  | Secure Shell | [SSH](../../Courses/Protocols/SSH/readme.md) | |
-| 110  | POP3 | [POP3](../../Courses/Protocols/POP3/readme.md) | |
-| 143 | Imap | [IMAP](../../Courses/Protocols/IMAP/readme.md) | |
-| 993 | ssl/imap |  | |
-| 995 | ssl/pop3 |  | |
+| Port | Details | Course |
+| ---  | ------- | ------|
+| 22  | Secure Shell | [SSH](../../Courses/Protocols/SSH/readme.md) |
+| 110  | POP3 | [POP3](../../Courses/Protocols/POP3/readme.md) |
+| 143 | Imap | [IMAP](../../Courses/Protocols/IMAP/readme.md) |
+| 993 | ssl/imap |  |
+| 995 | ssl/pop3 |  |
 
 >ssl-cert: Subject: commonName=NIXHARD
 
