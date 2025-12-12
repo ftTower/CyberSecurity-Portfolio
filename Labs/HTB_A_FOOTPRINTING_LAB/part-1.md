@@ -312,6 +312,6 @@ ceil@NIXEASY:/home$ cat flag/flag.txt
 HTB{7nrzise7hednrxihskjed7nzrgkweunj47zngrhdbkjhgdfbjkc7hgj}
 ```
 
-![Success](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/success.png)
+![Success](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-1/success.png)
 
 ---

