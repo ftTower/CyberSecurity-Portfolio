@@ -7,6 +7,8 @@ The third server is an MX and management server for the internal network. Subseq
 
 ### `resolution :`
 
+
+### Enumeration (TCP)
 ```
 sudo nmap 10.129.202.20 -A
 ```
@@ -77,18 +79,28 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 206.58 seconds
 ```
 
+here is a list of all open port services (TCP)
+
 | Port | Details | Course link |
 | ---  | ------- | ------|---|
 | 22  | Secure Shell | [SSH](../../Courses/Protocols/SSH/readme.md) | |
-| 110  | POP3 | [POP3]() | |
+| 110  | POP3 | [POP3](../../Courses/Protocols/POP3/readme.md) | |
 | 143 | Imap | [IMAP](../../Courses/Protocols/IMAP/readme.md) | |
-| 993 | ssl/imap | [SSL IMAP]() | |
-| 995 | ssl/pop3 | [SSL POP3]() | |
+| 993 | ssl/imap |  | |
+| 995 | ssl/pop3 |  | |
 
 >ssl-cert: Subject: commonName=NIXHARD
 
 ### SSH Enumeration
 
+To enumerate SSH, i used [ssh-audit](https://github.com/arthepsy/ssh-audit) tool.
+
+Clone it and change dir.
+```
+git clone https://github.com/arthepsy/ssh-audit.git && cd ssh-audit
+```
+
+Run ssh-audit with target ip.
 ```
 ./ssh-audit.py 10.129.202.20
 ```
@@ -199,9 +211,49 @@ Nmap done: 1 IP address (1 host up) scanned in 206.58 seconds
 (nfo) Potentially insufficient connection throttling detected, resulting in possible vulnerability to the DHEat DoS attack (CVE-2002-20001).  38 connections were created in 1.500 seconds, or 25.3 conns/sec; server must respond with a rate less than 20.0 conns/sec per IPv4/IPv6 source address to be considered safe.  For rate-throttling options, please see <https://www.ssh-audit.com/hardening_guides.html>.  Be aware that using 'PerSourceMaxStartups 1' properly protects the server from this attack, but will cause this test to yield a false positive.  Suppress this test and message with the --skip-rate-test option.
 ```
 
+From this output, we can learn some informations about ssh version,
+```
+# general
+(gen) banner: SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3
+(gen) software: OpenSSH 8.2p1
+(gen) compatibility: OpenSSH 7.4+, Dropbear SSH 2020.79+
+(gen) compression: enabled (zlib@openssh.com)
+``` 
+
+There is also a possible vulnerability DHEat DoS attack.
+
+**notes**: Our goal is to find the HTB user password, so the Denial of Service vulnerability is not useful in our case. However, in a real-world scenario, we would need to inform the client about this issue.
+
+### IMAP/POP3 Enumeration
+
+For this part, i tried to connect into imaps and pop3s service to verify if the allow_anonymous setting was set. 
+
+```
+openssl s_client -connect 10.129.39.135:imaps
+```
+
+```
+40778188617F0000:error:8000006F:system library:BIO_connect:Connection refused:../crypto/bio/bio_sock2.c:114:calling connect()
+40778188617F0000:error:10000067:BIO routines:BIO_connect:connect error:../crypto/bio/bio_sock2.c:116:
+connect:errno=111
+```
+
+```
+openssl s_client -connect 10.129.14.128:pop3s
+```
+```
+4047B5BEA97F0000:error:8000006F:system library:BIO_connect:Connection refused:../crypto/bio/bio_sock2.c:114:calling connect()
+4047B5BEA97F0000:error:10000067:BIO routines:BIO_connect:connect error:../crypto/bio/bio_sock2.c:116:
+connect:errno=111
+```
+
+At this moment, i was stuck on those results. And during the coffee break i remembered that agressive scan of nmap doesn't scan for UDP ports.
+
 ---
 
 ### UDP Enumeration
+
+> -sU scan for UDP ports
 
 ```bash
 sudo nmap 10.129.202.20 -sU
@@ -227,6 +279,7 @@ PORT      STATE  SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 4.68 seconds
 ```
 
+From this output we can see that only snmp port is open. 
 
 ### SNMP Enumeration
 

@@ -1,5 +1,4 @@
-# SSH Footprinting
-
+# IMAP Footprinting
 
 ## Methods
 
