@@ -39,13 +39,22 @@
 
 ## [Third Part](./part-3.md)
 **Target:** MX and Backup Server (10.129.202.20)  
-**Objective:** Access mail server and retrieve HTB user credentials  
+**Objective:** Access the mail server and retrieve HTB user credentials from the MySQL database  
 **Key Techniques:**
-- Nmap scan identifying SSH (22), POP3 (110), IMAP (143), and secure mail services (993/995)
-- SSH enumeration and analysis
-- IMAP/POP3 protocol exploitation
-- Mail server credential discovery and authentication
-- Email enumeration to locate sensitive information
+- Nmap TCP scan identifying SSH (22), POP3 (110), IMAP (143), and secure mail services (993/995)
+- SSH enumeration with ssh-audit tool revealing potential DHEat DoS vulnerability
+- UDP scan discovering open SNMP (161) service
+- SNMP enumeration using `snmpwalk` and `onesixtyone` for community string brute-force
+- Discovery of custom community string `backup` (replacing default `public`)
+- SNMP data extraction revealing user credentials (`tom:NMds732Js2761`)
+- IMAP/IMAPS connection using `curl` and `openssl s_client` for mailbox enumeration
+- Navigation through IMAP folders (Notes, Meetings, Important, INBOX)
+- Extraction of SSH private key from email in INBOX mailbox
+- SSH key permission configuration (chmod 600) and passphrase modification with `ssh-keygen`
+- SSH authentication with private key to access Tom's system
+- Bash history analysis revealing MySQL usage and key locations
+- MySQL database enumeration and credential extraction
+- Final retrieval of HTB user credentials from `users` database
 
-**Skills Demonstrated:** Mail protocol enumeration (POP3/IMAP), SSH analysis, email-based intelligence gathering
+**Skills Demonstrated:** SNMP enumeration and exploitation, IMAP protocol manipulation, email intelligence gathering, SSH key management, MySQL database access, credential extraction from multiple sources
 
