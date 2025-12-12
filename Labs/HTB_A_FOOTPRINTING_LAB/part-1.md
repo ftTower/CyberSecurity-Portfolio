@@ -1,5 +1,23 @@
 ## First part
 
+### Table of Contents
+1. [Objective](#objective)
+2. [Initial Reconnaissance](#initial-reconnaissance)
+  - [Nmap Scan](#nmap-scan)
+  - [Port Analysis](#port-analysis)
+3. [Service Enumeration](#service-enumeration)
+  - [SSH Enumeration](#ssh-enumeration)
+  - [FTP Enumeration](#ftp-enumeration)
+4. [Exploitation](#exploitation)
+  - [FTP Access](#ftp-access)
+  - [SSH Key Extraction](#ssh-key-extraction)
+  - [SSH Connection](#ssh-connection)
+5. [Flag Capture](#flag-capture)
+
+---
+
+### Objective
+
 ### `subject :`
 ```
 We were commissioned by the company Inlanefreight Ltd to test three different servers in their internal network. The company uses many different services, and the IT security department felt that a penetration test was necessary to gain insight into their overall security posture.
@@ -10,10 +28,13 @@ Additionally, our teammates have found the following credentials "ceil:qwer1234"
 
 The administrators have stored a flag.txt file on this server to track our progress and measure success. Fully enumerate the target and submit the contents of this file as proof.
 ```
+
 ---
 ### `resolution :`
 
-#### `enumeration: `
+## Initial Reconnaissance
+
+### Nmap Scan
 
 The first thing I did was to run an nmap scan over the server IP.
 ```bash
@@ -51,6 +72,8 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 30.89 seconds
 ```
 
+### Port Analysis
+
 Here we can see many interesting pieces of information:
 
 ```bash
@@ -62,7 +85,12 @@ Here we can see many interesting pieces of information:
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel # <- system information
 ```
 
-#### `SSH Footprinting: `
+---
+
+## Service Enumeration
+
+### SSH Enumeration
+
 
 The subject told us that our teammate has found credentials linked to SSH, so we confirmed that the DNS server has an open SSH port.
 
@@ -84,9 +112,9 @@ ceil@10.129.11.228: Permission denied (publickey).
 ```
 Unfortunately, SSH is configured to only allow connection with public key for the ceil user.
 
-My next goal was to inspect the ftp server.
+### FTP Enumeration
 
-#### `FTP Footprinting: `
+My next goal was to inspect the FTP server.
 
 
 ```bash
@@ -116,6 +144,12 @@ ftp> exit
 221 Goodbye.
 ```
 
+---
+
+## Exploitation
+
+### FTP Access
+
 I retried on the 2121 FTP service 
 ```bash
 ftp 10.129.11.228 2121 # <- port 
@@ -132,8 +166,6 @@ Remote system type is UNIX.
 Using binary mode to transfer files.
 ftp>
 ```
-
-#### `Retriving informations: `
 
 
 ```
@@ -157,6 +189,8 @@ This time we have good information.
 
 `.bash_history`: can reveal some secrets
 `.ssh`: contains the private key of the user
+
+### SSH Key Extraction
 
 So, I hopped into the .ssh directory to retry the connection with the private key
 ```
@@ -184,6 +218,8 @@ local: id_rsa remote: id_rsa
 ftp> exit
 221 Goodbye.
 ```
+
+### SSH Connection
 
 >`-i` permits to specify the private key path 
 ```bash
@@ -267,6 +303,11 @@ drwx------ 2 ceil ceil 4096 Nov 10  2021 .cache
 drwx------ 2 ceil ceil 4096 Nov 10  2021 .ssh
 -rw------- 1 ceil ceil  759 Nov 10  2021 .viminfo
 ```
+
+---
+
+## Flag Capture
+
 Looking for the flag path, I tried to look at the bash history.
 
 ```

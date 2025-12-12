@@ -1,5 +1,34 @@
 # Third part
 
+### Table of Contents
+1. [Objective](#objective)
+2. [Initial Reconnaissance](#initial-reconnaissance)
+  - [TCP Enumeration](#tcp-enumeration)
+  - [Port Analysis](#port-analysis)
+  - [SSH Enumeration](#ssh-enumeration)
+  - [IMAP/POP3 Enumeration](#imappop3-enumeration)
+  - [UDP Enumeration](#udp-enumeration)
+3. [SNMP Exploitation](#snmp-exploitation)
+  - [SNMP Enumeration](#snmp-enumeration)
+  - [Community String Discovery](#community-string-discovery)
+  - [Credential Extraction](#credential-extraction)
+4. [Mail Server Access](#mail-server-access)
+  - [IMAPS Connection](#imaps-connection)
+  - [Mailbox Enumeration](#mailbox-enumeration)
+  - [SSH Key Discovery](#ssh-key-discovery)
+5. [System Access](#system-access)
+  - [SSH Key Configuration](#ssh-key-configuration)
+  - [SSH Connection](#ssh-connection)
+  - [System Reconnaissance](#system-reconnaissance)
+6. [Database Access](#database-access)
+  - [MySQL Connection](#mysql-connection)
+  - [Database Enumeration](#database-enumeration)
+  - [Flag Capture](#flag-capture)
+
+---
+
+### Objective
+
 ### `subject :`
 ```
 The third server is an MX and management server for the internal network.
@@ -7,7 +36,14 @@ Subsequently, this server has the function of a backup server for the internal a
 Accordingly, a user named HTB was also created here, whose credentials we need to access.
 ```
 
+---
+
 ### `resolution :`
+
+## Initial Reconnaissance
+
+### TCP Enumeration
+
 
 
 ### Enumeration (TCP)
@@ -80,6 +116,8 @@ HOP RTT      ADDRESS
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 206.58 seconds
 ```
+
+### Port Analysis
 
 Here is a list of all open port services (TCP)
 
@@ -253,6 +291,8 @@ At this moment, I was stuck on these results. During the coffee break, I remembe
 
 ---
 
+## SNMP Exploitation
+
 ### UDP Enumeration
 
 > -sU scan for UDP ports
@@ -296,7 +336,10 @@ But there we can see that using public community string isn't working. (must be 
 ```
 Timeout: No Response from 10.129.202.20
 ```
-To continue SNMP enumaration i used an another tool named onesixtyone.
+
+### Community String Discovery
+
+To continue SNMP enumeration, I used another tool named onesixtyone.
 
 
 This tool is a SNMP scanner made for speed. It is used to perform a dictionary attack (brute-force) against the SNMP service.
@@ -319,6 +362,8 @@ snmpwalk -v2c -c backup 10.129.197.149
 ```
 > -v2c specifies the version of SNMP we want to use.
 
+
+### Credential Extraction
 
 ```iso.3.6.1.2.1.1.1.0 = STRING: "Linux NIXHARD 5.4.0-90-generic #101-Ubuntu SMP Fri Oct 15 20:00:55 UTC 2021 x86_64"
 iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10
@@ -391,6 +436,12 @@ iso.3.6.1.2.1.25.1.7.1.4.1.2.6.66.65.67.75.85.80.4 = No more variables left in t
 
 >tom NMds732Js2761
 
+---
+
+## Mail Server Access
+
+### IMAPS Connection
+
 ### Exploit credentials
 
 With the new credentials in hand, we can try to use them with the imaps service.
@@ -444,6 +495,8 @@ curl -k 'imaps://10.129.197.149' --user tom:NMds732Js2761 -v
 
 Here we have successfully connected to imaps with Tom's account.
 We can see that a list of folders appears at the end of the output.
+
+### Mailbox Enumeration
 
 So the next step is to connect to imaps to take a look inside these folders.
 ```
@@ -623,6 +676,8 @@ a OK [READ-WRITE] Select completed (0.008 + 0.000 + 0.007 secs).
 
 **Notes**: All mailboxes were empty except the INBOX folder.
 
+### SSH Key Discovery
+
 To read the file present, we can use the `fetch` command.
 > If we want to select more than 1 file, replace 1 with 1:5, 3:15, etc., if they exist.
 ```
@@ -694,6 +749,12 @@ XvSb8cNlUIWdRwAAAAt0b21ATklYSEFSRAECAwQFBg==
 We found the ssh private key sent from admin to tom in them mailbox.
 
 
+---
+
+## System Access
+
+### SSH Key Configuration
+
 To extract the key, let's create a file.
 ```
 touch sshkey_private
@@ -734,6 +795,8 @@ Enter same passphrase again:
 Your identification has been saved with the new passphrase.
 ```
 
+### SSH Connection
+
 After working on our private key, we can retry to connect with `ssh`.
 ```
 ssh -i sshkey_private tom@10.129.202.20
@@ -766,6 +829,8 @@ Last login: Wed Nov 10 02:51:52 2021 from 10.10.14.20
 tom@NIXHARD:~$ 
 ```
 We are logged in via SSH to Tom's computer!
+
+### System Reconnaissance
 
 To start, I'd like to take a look at Tom's bash history.
 ```
@@ -875,6 +940,12 @@ no output
 
 After snooping around Tom's home, my next checkpoint was to connect to his MySQL account
 
+---
+
+## Database Access
+
+### MySQL Connection
+
 ```bash
 mysql -u tom -p
 ```
@@ -896,6 +967,8 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql> 
 ```
+
+### Database Enumeration
 
 Now we have access to Tom's MySQL. We can start by looking at all databases with `show databases;`
 
@@ -934,6 +1007,8 @@ mysql> show columns from users;
 3 rows in set (0.01 sec)
 ```
 Now we know that there are 3 columns: id, username, and password.
+
+### Flag Capture
 
 We want to display (`SELECT`) all users named (`* FROM users WHERE username LIKE`) "HTB" 
 
