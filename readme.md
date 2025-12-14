@@ -9,22 +9,20 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 
 ## `📋 Table of Contents`
 
-### [📚 Courses](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses) <- click here
-
-![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/font.png)
-![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)
+[![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/font.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
+[![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
 
 >Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
 
+### [📚 Click here](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
 ---
 
-### [🔬 Labs](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs) <- click here
-
-![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/font.png)
-![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)
-
+[![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/font.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
+[![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
 
 >Practical penetration testing exercises and CTF write-ups.
+
+### [🔬 Click here](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
 
 
 ## `📫 Contact`
