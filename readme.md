@@ -34,16 +34,22 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 </div>
 
 ---
+<div align="center">
 
 ## `📫 Contact`
+
+</div>
 
 - auer.winum.thomas@gmail.com
 - [Website](https://tauer.dev)
 - [GitHub](https://github.com/ftTower)
 - [Linkedin](https://linkedin.com/in/thomas-auer-winum)
 
+<div align="center">
 
 ## `📁 Portfolio Structure`
+
+</div>
 
 ```
 .
