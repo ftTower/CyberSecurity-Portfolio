@@ -3,7 +3,15 @@
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/banner.jpg)
 
 
-A comprehensive cybersecurity portfolio and evolving knowledge base. This repository centralizes detailed study notes, write-ups, and pentesting utilities. Designed for continuous learning and future search engine integration.
+<div align="center">
+
+## 🔐 About This Portfolio
+
+This repository centralizes detailed study notes, write-ups, and pentesting utilities. Designed for continuous learning and [search engine](https://github.com/ftTower/Orbit) integration.
+
+</div>
+
+---
 
 💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
 
