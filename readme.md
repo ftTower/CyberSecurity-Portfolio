@@ -1,5 +1,3 @@
-# Welcome !
-
 ![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/font.png)
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/banner.jpg)
@@ -13,6 +11,7 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 
 ### [📚 Courses](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses) <- click here
 
+![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/font.png)
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)
 
 >Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
@@ -21,6 +20,7 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 
 ### [🔬 Labs](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs) <- click here
 
+![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/font.png)
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)
 
 
