@@ -1,5 +1,7 @@
 # Welcome !
 
+![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/font.png)
+
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/banner.jpg)
 
 
