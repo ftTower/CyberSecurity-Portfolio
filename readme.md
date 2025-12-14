@@ -13,7 +13,7 @@ This repository centralizes detailed study notes, write-ups, and pentesting util
 
 ---
 
-💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
+>💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
 
 ---
 
