@@ -7,14 +7,19 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 
 💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
 
-## `📋 Table of Contents`
+---
 
 [![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/font.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
 [![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
 
 >Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
 
-### [📚 Click here](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
+<div align="center">
+
+[![Click here](https://img.shields.io/badge/📚_Click_here-blue?style=for-the-badge)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
+
+</div>
+
 ---
 
 [![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/font.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
@@ -22,8 +27,13 @@ A comprehensive cybersecurity portfolio and evolving knowledge base. This reposi
 
 >Practical penetration testing exercises and CTF write-ups.
 
-### [🔬 Click here](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
+<div align="center">
 
+[![Click here](https://img.shields.io/badge/🔬_Click_here-blue?style=for-the-badge)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
+
+</div>
+
+---
 
 ## `📫 Contact`
 
