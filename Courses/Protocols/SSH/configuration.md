@@ -1,5 +1,34 @@
 # SSH Configuration and Setup
 
+---
+
+![alt text](image.png)
+
+## 🔧 Setup 
+
+```bash
+sudo apt update && sudo apt upgrade -y 
+```
+
+```bash
+sudo ufw status 
+```
+
+```bash
+sudo ufw allow ssh
+```
+
+```bash
+sudo ufw allow <port>/tcp
+```
+
+```bash
+sudo ufw enable
+```
+
+```bash
+sudo ufw status
+```
 
 ---
 
@@ -32,5 +61,3 @@ Subsystem       sftp    /usr/lib/openssh/sftp-server
 | **PermitTunnel** | | Allows tunneling. |
 | **DebianBanner** | yes | Displays a specific banner when logging in. |
 
-
----
