@@ -1,4 +1,4 @@
-![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/font.png)
+![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/welcome_font.png)
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/buffer/chameleon-banner_transparent-bg_2025-full.webp)
 
