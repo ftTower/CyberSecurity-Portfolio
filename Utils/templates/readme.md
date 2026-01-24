@@ -3,7 +3,13 @@
 
 ## TODO 
 
-- Gobuster course
+- Gobuster/ffuf/wffuf course
+
+### UNFINISHED
+
+- courses/tools/metasploit/
+- courses/tools/burp_suite/
+- courses/protocol/telnet
 
 ## NOTES
 
