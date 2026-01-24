@@ -1,6 +1,6 @@
 # Telnet 
 
-![Banner]()
+![Banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Protocols/Telnet/banner.png)
 
 ---
 

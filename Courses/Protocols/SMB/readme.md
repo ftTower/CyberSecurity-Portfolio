@@ -42,3 +42,4 @@
 ## 🔗 External-Ressources
 
 - [rpcclient commands](https://www.samba.org/samba/docs/current/man-html/rpcclient.1.html)
+- [smbclient commands](https://medium.com/@ibo1916a/smbclient-command-2803de274e46)
