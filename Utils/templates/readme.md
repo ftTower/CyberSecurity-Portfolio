@@ -1,9 +1,5 @@
-# Utils Readme
+# TODO 
 
-
-## TODO 
-
-- Gobuster/ffuf/wffuf course
 
 ### UNFINISHED
 
@@ -11,7 +7,6 @@
 - courses/tools/burp_suite/
 - courses/protocol/telnet
 
-## NOTES
+### UNSTARTED 
 
-[gobuster wordlist](https://github.com/aels/subdirectories-discover.git)
-
+- Gobuster/ffuf/wffuf course | [gobuster wordlist](https://github.com/aels/subdirectories-discover.git)
