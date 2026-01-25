@@ -1,6 +1,6 @@
 # Burp Suite
 
-![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Tools/burp_suite/banner.png)
+![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/Tools/burp_suite/banner.jpg)
 
 ---
 
