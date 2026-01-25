@@ -18,7 +18,7 @@ This repository centralizes detailed study notes, write-ups, and pentesting util
 ---
 
 [![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/font.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
-[![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/banner.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
+[![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/course_banner.gif)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Courses)
 
 >Comprehensive notes on cybersecurity protocols, techniques, and methodologies.
 
@@ -31,7 +31,7 @@ This repository centralizes detailed study notes, write-ups, and pentesting util
 ---
 
 [![font](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/font.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
-[![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Labs/banner.png)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
+[![banner](https://github.com/ftTower/ftTower/blob/main/assets/Cybersec-Portfolio/Courses/fun.gif)](https://github.com/ftTower/CyberSecurity-Portfolio/tree/main/Labs)
 
 >Practical penetration testing exercises and CTF write-ups.
 
