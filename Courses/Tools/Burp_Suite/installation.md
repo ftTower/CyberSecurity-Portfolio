@@ -1,4 +1,4 @@
-# Burp Suite Installation
+# Burp Suite - Installation
 
 To install Burp Suite on Linux go to this link and download the version you want. 
 
