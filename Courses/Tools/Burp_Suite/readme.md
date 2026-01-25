@@ -1,5 +1,6 @@
 # Burp Suite
 
+![banner]()
 
 ---
 
@@ -16,11 +17,11 @@
 
 | Property | Details |
 |----------|---------|
-| **Type** |   |
-| **Category** |  |
-| **Platform** |  |
-| **Purpose** |  |
-| **Documentation** |   |
+| **Type** | Web Application Security Testing Tool |
+| **Category** | Penetration Testing / Web Proxy |
+| **Platform** | Windows, macOS, Linux (Java-based) |
+| **Purpose** | Intercepting proxy for testing web application security, vulnerability scanning, and manual/automated pentesting |
+| **Documentation** | https://portswigger.net/burp/documentation |
 
 ---
 

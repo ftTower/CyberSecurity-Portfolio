@@ -2,6 +2,7 @@
 
 ![banner](https://github.com/ftTower/ftTower/blob/main/assets/buffer/chameleon-banner_transparent-bg_2025-full.webp)
 
+---
 
 <div align="center">
 
@@ -11,7 +12,6 @@ This repository centralizes detailed study notes, write-ups, and pentesting util
 
 </div>
 
----
 
 >💌 **Notes**: Currently migrating my work from Notion to GitHub, so not all notes are available yet.  
 
