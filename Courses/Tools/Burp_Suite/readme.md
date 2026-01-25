@@ -20,6 +20,7 @@
 | **Type** | Web Application Security Testing Tool |
 | **Category** | Penetration Testing / Web Proxy |
 | **Platform** | Windows, macOS, Linux (Java-based) |
+| **Port** | 8080 (default proxy port) |
 | **Purpose** | Intercepting proxy for testing web application security, vulnerability scanning, and manual/automated pentesting |
 | **Documentation** | https://portswigger.net/burp/documentation |
 
@@ -28,7 +29,8 @@
 
 ## 📕 Cross-References
 
-1. [Burp suite Installation](./installation.md)
+1. [Installation](./installation.md)
+2. [Proxy Setup](./proxy_setup.md)
 
 ---
 

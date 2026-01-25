@@ -1,9 +1,6 @@
 # Burp Suite - Installation
 
-To install Burp Suite on Linux go to this link and download the version you want. 
-
-[Download link](https://portswigger.net/burp/releases)
-
+To install Burp Suite on Linux go to this [link](https://portswigger.net/burp/releases) and download the version you want. 
 
 Java may not install correctly with Burp launcher. You can [Download](https://docs.oracle.com/goldengate/1212/gg-winux/GDRAD/java.htm) it there.
 
